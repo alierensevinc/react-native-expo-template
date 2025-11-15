@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Neva-Token",
-    "slug": "Neva-Token",
+    "name": "UpKid",
+    "slug": "upkid",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,16 +14,6 @@
     },
     "ios": {
       "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "edgeToEdgeEnabled": true
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     }
   }
 }
