@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "UpKid",
+    "name": "React Native Expo Template",
     "slug": "upkid",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,10 +14,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.sevincaeren.upkid"
+      "bundleIdentifier": "com.sevincaeren.rnexpotemplate"
     },
     "android": {
-      "package": "com.sevincaeren.upkid"
+      "package": "com.sevincaeren.rnexpotemplate"
     }
   }
 }
