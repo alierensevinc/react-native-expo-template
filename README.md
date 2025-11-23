@@ -1,13 +1,7 @@
-Harika bir başlangıç şablonu (template) gibi görünüyor. Özellikle **Expo 54**, **React 19** ve **React Navigation 7** (en güncel sürüm) kullanıyor olman bu template'i oldukça modern kılıyor.
-
-Genelde GitHub'da standart olduğu için **İngilizce** bir `README.md` hazırladım. Eğer Türkçe istersen belirtebilirsin, çevirebilirim.
-
-Aşağıdaki kodu kopyalayıp projenin ana dizininde `README.md` isimli bir dosya oluşturup içine yapıştırabilirsin.
-
-````markdown
 # React Native Expo Template
 
-A modern, bare-minimum starter template for building mobile apps with **Expo (SDK 54)**, **React Native (0.81)**, and **React (19)**.
+A modern, bare-minimum starter template for building mobile apps with **Expo (SDK 54)**, **React Native (0.81)**, and *
+*React (19)**.
 
 This template comes pre-configured with the latest **React Navigation v7** and **Reanimated v4**.
 
@@ -23,6 +17,7 @@ This template comes pre-configured with the latest **React Navigation v7** and *
 ## 📋 Prerequisites
 
 Before you begin, ensure you have met the following requirements:
+
 - **Node.js** (Latest LTS recommended)
 - **npm**, **yarn**, or **bun**
 - **iOS Simulator** (Mac only) or **Android Emulator** setup.
@@ -32,21 +27,20 @@ Before you begin, ensure you have met the following requirements:
 1. Clone the repository:
    ```bash
    git clone [https://github.com/alierensevinc/react-native-expo-template.git](https://github.com/alierensevinc/react-native-expo-template.git)
-````
 
-2.  Navigate to the project directory:
+2. Navigate to the project directory:
 
-    ```bash
-    cd react-native-expo-template
-    ```
+   ```bash
+   cd react-native-expo-template
+   ```
 
-3.  Install dependencies:
+3. Install dependencies:
 
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
 ## 🏃‍♂️ Running the App
 
@@ -90,10 +84,9 @@ npx expo start
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome\! Feel free to check the [issues page](https://www.google.com/search?q=https://github.com/alierensevinc/react-native-expo-template/issues).
+Contributions, issues, and feature requests are welcome\! Feel free to check
+the [issues page](https://www.google.com/search?q=https://github.com/alierensevinc/react-native-expo-template/issues).
 
 ## 📝 License
 
 This project is open source and available under the [MIT License](https://www.google.com/search?q=LICENSE).
-
-```
