@@ -1,7 +1,7 @@
 # React Native Expo Template
 
-A modern, bare-minimum starter template for building mobile apps with **Expo (SDK 54)**, **React Native (0.81)**, and *
-*React (19)**.
+A modern, bare-minimum starter template for building mobile apps with **Expo (SDK 54)**, **React Native (0.81)**,
+and **React (19)**.
 
 This template comes pre-configured with the latest **React Navigation v7** and **Reanimated v4**.
 
@@ -46,11 +46,13 @@ Before you begin, ensure you have met the following requirements:
 
 To start the development server:
 
-```bash
-npm start
-# or
-npx expo start
-```
+ ```bash
+    npm start
+  ```
+
+  ```bash
+    npx expo start
+  ```
 
 ### Run on specific platforms:
 
@@ -74,13 +76,13 @@ npx expo start
 
 ## 📦 Key Dependencies
 
-| Package | Version | Description |
-| :--- | :--- | :--- |
-| `expo` | \~54.0.23 | The core Expo SDK |
-| `react-native` | 0.81.5 | Mobile framework |
-| `@react-navigation/native` | ^7.1.20 | Routing and navigation (v7) |
-| `react-native-reanimated` | ^4.1.5 | Animations library |
-| `react-native-gesture-handler`| ^2.29.1 | Native touches and gestures |
+| Package                        | Version   | Description                 |
+|:-------------------------------|:----------|:----------------------------|
+| `expo`                         | \~54.0.23 | The core Expo SDK           |
+| `react-native`                 | 0.81.5    | Mobile framework            |
+| `@react-navigation/native`     | ^7.1.20   | Routing and navigation (v7) |
+| `react-native-reanimated`      | ^4.1.5    | Animations library          |
+| `react-native-gesture-handler` | ^2.29.1   | Native touches and gestures |
 
 ## 🤝 Contributing
 
