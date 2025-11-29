@@ -26,7 +26,7 @@ Before you begin, ensure you have met the following requirements:
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/alierensevinc/react-native-expo-template.git](https://github.com/alierensevinc/react-native-expo-template.git)
+   git clone https://github.com/alierensevinc/react-native-expo-template.git
 
 2. Navigate to the project directory:
 
