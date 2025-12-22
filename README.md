@@ -12,7 +12,6 @@ This template comes pre-configured with the latest **React Navigation v7**, **Re
 - **State Management**: **Zustand** for simple and scalable state management.
 - **Localization**: **i18next** & **react-i18next** pre-configured for multi-language support.
 - **Maps**: **react-native-maps** with **supercluster** and **react-native-map-clustering**.
-- **Ads**: **react-native-google-mobile-ads** ready for monetization.
 - **Storage**: **react-native-mmkv** for fastest mobile key-value storage.
 - **UI & Theme**: **react-native-svg** and a custom **ThemeContext** for dark/light mode handling.
 - **Animations**: **Reanimated 4** & **Gesture Handler**.
@@ -84,7 +83,6 @@ npx expo start
 | `i18next`                        | ^25.6.3  | Internationalization     |
 | `react-native-mmkv`              | ^3.3.0   | High-performance Storage |
 | `react-native-maps`              | 1.20.1   | Map Integration          |
-| `react-native-google-mobile-ads` | ^16.0.1  | AdMob Integration        |
 | `react-native-reanimated`        | ~4.1.1   | Animations               |
 
 ## 🤝 Contributing
