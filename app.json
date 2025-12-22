@@ -18,6 +18,9 @@
     },
     "android": {
       "package": "com.sevincaeren.rnexpotemplate"
-    }
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
