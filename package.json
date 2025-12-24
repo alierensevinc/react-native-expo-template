@@ -28,7 +28,8 @@
     "android:build:dev": "eas build --profile development --platform android",
     "android:build:preview": "NODE_ENV=development eas build --profile preview --platform android",
     "android:build:prod": "NODE_ENV=production eas build --profile production --platform android",
-    "android:submit": "eas submit -p android --latest"
+    "android:submit": "eas submit -p android --latest",
+    "prepare": "husky"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
@@ -95,6 +96,8 @@
   "devDependencies": {
     "eslint": "^8.57.0",
     "eslint-config-universe": "^15.0.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.7.4"
   }
 }
