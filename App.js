@@ -9,6 +9,7 @@ import "./src/i18n"; // i18n yapılandırmasını yükle
 import { ThemeProvider } from "./src/context/ThemeContext";
 
 import HomeScreen from "./src/screens/HomeScreen";
+import DetailScreen from "./src/screens/DetailScreen";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -16,8 +17,9 @@ const Stack = createNativeStackNavigator();
 
 function RootStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Detail" component={DetailScreen} />
     </Stack.Navigator>
   );
 }

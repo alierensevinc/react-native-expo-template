@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
+    "@gorhom/bottom-sheet": "^5.2.8",
     "@niondigital/widgets-expo-config-plugin": "^1.1.1",
     "@react-native-community/netinfo": "11.4.1",
     "@react-native-community/slider": "5.0.1",
