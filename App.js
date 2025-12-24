@@ -12,6 +12,7 @@ import { ThemeProvider } from "./src/context/ThemeContext";
 
 import HomeScreen from "./src/screens/HomeScreen";
 import DetailScreen from "./src/screens/DetailScreen";
+import ComponentsScreen from "./src/screens/ComponentsScreen";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,6 +23,7 @@ function RootStack() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Detail" component={DetailScreen} />
+      <Stack.Screen name="Components" component={ComponentsScreen} />
     </Stack.Navigator>
   );
 }

@@ -1,13 +1,24 @@
-import React, { useState } from "react";
-import { View, Text, ScrollView, Alert } from "react-native";
+import React, { useState, useRef, useMemo } from "react";
+import { View, Text, ScrollView, Alert, Modal, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../context/ThemeContext";
+import {
+  BottomSheetModal,
+  BottomSheetView,
+  BottomSheetBackdrop,
+} from "@gorhom/bottom-sheet";
+import Toast from "react-native-toast-message";
 import Header from "../components/Header";
-import Card from "../components/Card";
+
+// Components
 import Accordion from "../components/Accordion";
+import Button from "../components/Button";
+import Card from "../components/Card";
 import Checkbox from "../components/Checkbox";
 import Chip from "../components/Chip";
+import DateTime from "../components/DateTime";
 import Input from "../components/Input";
+import Loading from "../components/Loading";
 import ProgressBar from "../components/ProgressBar";
 import Radio from "../components/Radio";
 import Range from "../components/Range";
@@ -15,230 +26,324 @@ import SearchBar from "../components/SearchBar";
 import Segment from "../components/Segment";
 import Select from "../components/Select";
 import Toggle from "../components/Toggle";
-import DateTime from "../components/DateTime";
-import Button from "../components/Button";
 
-const DetailScreen = ({ route }) => {
+import { Ionicons } from "@expo/vector-icons";
+
+export default function DetailScreen({ route }) {
+  const { component, title } = route.params || {};
   const { colors, spacing, typography } = useTheme();
 
-  // State for components
-  const [isChecked, setIsChecked] = useState(false);
-  const [chips, setChips] = useState(["React", "Native", "Expo"]);
+  // State mgmt for various demos
+  const [checkboxValue, setCheckboxValue] = useState(false);
+  const [radioValue, setRadioValue] = useState(false);
+  const [toggleValue, setToggleValue] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [radioSelected, setRadioSelected] = useState(false);
-  const [rangeValue, setRangeValue] = useState(50);
   const [searchValue, setSearchValue] = useState("");
   const [segmentIndex, setSegmentIndex] = useState(0);
-  const [selectValue, setSelectValue] = useState("java");
-  const [toggleValue, setToggleValue] = useState(false);
   const [dateValue, setDateValue] = useState(new Date());
+  const [rangeValue, setRangeValue] = useState(50);
+  const [selectValue, setSelectValue] = useState("");
+  const [chips, setChips] = useState(["React", "Native", "Expo"]);
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const handleChipDelete = (chipToDelete) => {
-    setChips(chips.filter((c) => c !== chipToDelete));
-  };
+  // Bottom Sheet
+  const bottomSheetModalRef = useRef(null);
+  const snapPoints = useMemo(() => ["25%", "50%"], []);
+  const handlePresentModalPress = () => bottomSheetModalRef.current?.present();
+  const renderBackdrop = (props) => (
+    <BottomSheetBackdrop {...props} disappearsOnIndex={-1} appearsOnIndex={0} />
+  );
 
-  return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-      <Header title="All Components" showBack={true} />
-      <ScrollView
-        contentContainerStyle={{ padding: spacing.m, paddingBottom: 100 }}
-      >
-        <Text
-          style={{
-            ...typography.headline,
-            color: colors.text,
-            marginBottom: spacing.m,
-          }}
-        >
-          Extended Library
-        </Text>
-
-        <Card style={{ marginBottom: spacing.m }}>
-          <Text
-            style={{
-              color: colors.text,
-              fontWeight: "bold",
-              marginBottom: spacing.s,
-            }}
-          >
-            Accordion
-          </Text>
-          <Accordion title="Tap to expand">
-            <Text style={{ color: colors.text }}>
-              This is the hidden content inside the accordion. It animates open
-              and closed using reanimated transitions!
-            </Text>
-          </Accordion>
-        </Card>
-
-        <Card style={{ marginBottom: spacing.m }}>
-          <Text
-            style={{
-              color: colors.text,
-              fontWeight: "bold",
-              marginBottom: spacing.s,
-            }}
-          >
-            Inputs & Selects
-          </Text>
-          <Input
-            label="Floating Label Input"
-            placeholder="Type something..."
-            value={inputValue}
-            onChangeText={setInputValue}
-          />
-          <SearchBar
-            value={searchValue}
-            onChangeText={setSearchValue}
-            onClear={() => setSearchValue("")}
-            style={{ marginVertical: spacing.s }}
-          />
-          <Select
-            label="Choose Language"
-            selectedValue={selectValue}
-            onValueChange={setSelectValue}
-            items={[
-              { label: "JavaScript", value: "js" },
-              { label: "Java", value: "java" },
-              { label: "Swift", value: "swift" },
-            ]}
-          />
-        </Card>
-
-        <Card style={{ marginBottom: spacing.m }}>
-          <Text
-            style={{
-              color: colors.text,
-              fontWeight: "bold",
-              marginBottom: spacing.s,
-            }}
-          >
-            Toggles & Controls
-          </Text>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: spacing.s,
-            }}
-          >
-            <Text style={{ color: colors.text }}>Checkbox</Text>
-            <Checkbox checked={isChecked} onChange={setIsChecked} />
+  const renderContent = () => {
+    switch (component) {
+      case "Accordion":
+        return (
+          <View>
+            <Accordion title="Accordion 1">
+              <Text style={{ color: colors.text }}>Content 1</Text>
+            </Accordion>
+            <Accordion title="Accordion 2">
+              <Text style={{ color: colors.text }}>
+                Content 2 with more text inside to show expansion.
+              </Text>
+            </Accordion>
           </View>
-
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: spacing.s,
-            }}
-          >
-            <Text style={{ color: colors.text }}>Radio Button</Text>
-            <Radio selected={radioSelected} onChange={setRadioSelected} />
+        );
+      case "Button":
+        return (
+          <View style={{ gap: spacing.m }}>
+            <Button title="Primary" variant="primary" onPress={() => {}} />
+            <Button title="Secondary" variant="secondary" onPress={() => {}} />
+            <Button title="Outline" variant="outline" onPress={() => {}} />
+            <Button
+              title="Loading"
+              loading
+              variant="primary"
+              onPress={() => {}}
+            />
+            <Button
+              title="Disabled"
+              disabled
+              variant="primary"
+              onPress={() => {}}
+            />
           </View>
-
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: spacing.s,
-            }}
-          >
-            <Text style={{ color: colors.text }}>Switch Toggle</Text>
-            <Toggle value={toggleValue} onValueChange={setToggleValue} />
+        );
+      case "Card":
+        return (
+          <View style={{ gap: spacing.m }}>
+            <Card>
+              <Text style={{ color: colors.text, fontWeight: "bold" }}>
+                Basic Card
+              </Text>
+              <Text style={{ color: colors.text }}>
+                This is a simple card component.
+              </Text>
+            </Card>
+            <Card onPress={() => Alert.alert("Card Pressed")}>
+              <Text style={{ color: colors.primary, fontWeight: "bold" }}>
+                Pressable Card
+              </Text>
+              <Text style={{ color: colors.text }}>
+                Tap me to see the press animation.
+              </Text>
+            </Card>
           </View>
-
-          <Text style={{ color: colors.text, marginTop: spacing.s }}>
-            Segmented Control
-          </Text>
-          <Segment
-            options={["Daily", "Weekly", "Monthly"]}
-            selectedIndex={segmentIndex}
-            onChange={setSegmentIndex}
-            style={{ marginTop: spacing.xs }}
-          />
-        </Card>
-
-        <Card style={{ marginBottom: spacing.m }}>
-          <Text
-            style={{
-              color: colors.text,
-              fontWeight: "bold",
-              marginBottom: spacing.s,
-            }}
+        );
+      case "Checkbox":
+        return (
+          <View style={{ gap: spacing.m }}>
+            <Checkbox label="Unchecked" checked={false} onChange={() => {}} />
+            <Checkbox label="Checked" checked={true} onChange={() => {}} />
+            <Checkbox
+              label="Interactive"
+              checked={checkboxValue}
+              onChange={setCheckboxValue}
+            />
+          </View>
+        );
+      case "Chip":
+        return (
+          <View
+            style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.s }}
           >
-            Progress & Range
-          </Text>
-          <Text style={{ color: colors.text, fontSize: 12, marginBottom: 4 }}>
-            Progress Bar
-          </Text>
-          <ProgressBar progress={0.7} style={{ marginBottom: spacing.m }} />
-
-          <Range
-            label={`Slider Value: ${Math.round(rangeValue)}`}
-            value={rangeValue}
-            onValueChange={setRangeValue}
-            min={0}
-            max={100}
-          />
-        </Card>
-
-        <Card style={{ marginBottom: spacing.m }}>
-          <Text
-            style={{
-              color: colors.text,
-              fontWeight: "bold",
-              marginBottom: spacing.s,
-            }}
-          >
-            Chips
-          </Text>
-          <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
             {chips.map((chip) => (
               <Chip
                 key={chip}
                 label={chip}
-                onDelete={() => handleChipDelete(chip)}
-                onPress={() => Alert.alert(`Pressed ${chip}`)}
-                selected={chip === "React"}
+                onDelete={() => setChips(chips.filter((c) => c !== chip))}
               />
             ))}
+            <Chip label="Read Only" selected />
             <Chip
               label="+ Add"
-              onPress={() => setChips([...chips, `Item ${chips.length + 1}`])}
+              onPress={() => setChips([...chips, `New ${chips.length}`])}
             />
-            <Chip label="Read Only" selected={true} style={{ marginLeft: 8 }} />
           </View>
-        </Card>
-
-        <Card style={{ marginBottom: spacing.m }}>
-          <Text
-            style={{
-              color: colors.text,
-              fontWeight: "bold",
-              marginBottom: spacing.s,
-            }}
+        );
+      case "DateTime":
+        return (
+          <View style={{ gap: spacing.m }}>
+            <Text style={{ color: colors.text }}>
+              Selected: {dateValue.toLocaleString()}
+            </Text>
+            <DateTime
+              value={dateValue}
+              onChange={(_, d) => setDateValue(d || dateValue)}
+            />
+          </View>
+        );
+      case "Input":
+        return (
+          <View style={{ gap: spacing.m }}>
+            <Input
+              label="Standard"
+              value={inputValue}
+              onChangeText={setInputValue}
+            />
+            <Input
+              label="Password"
+              secureTextEntry
+              // Internal toggle now handles the icon
+            />
+            <Input label="Error" error="Invalid input" />
+          </View>
+        );
+      case "Loading":
+        return (
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-around" }}
           >
-            Date & Time
-          </Text>
-          <DateTime
-            label="Pick a Date"
-            value={dateValue}
-            onChange={(e, d) => setDateValue(d)}
-            mode="date"
+            <Loading size="small" />
+            <Loading size="medium" />
+            <Loading size="large" color={colors.secondary} />
+          </View>
+        );
+      case "ProgressBar":
+        return (
+          <View style={{ gap: spacing.m }}>
+            <ProgressBar progress={0.3} />
+            <ProgressBar progress={0.7} />
+            <ProgressBar progress={1.0} />
+          </View>
+        );
+      case "Radio":
+        return (
+          <View style={{ gap: spacing.m }}>
+            <Radio
+              label="Option 1"
+              selected={!radioValue}
+              onChange={() => setRadioValue(false)}
+            />
+            <Radio
+              label="Option 2"
+              selected={radioValue}
+              onChange={() => setRadioValue(true)}
+            />
+          </View>
+        );
+      case "Range":
+        return (
+          <View style={{ gap: spacing.m }}>
+            <Text style={{ color: colors.text }}>Value: {rangeValue}</Text>
+            <Range
+              minimumValue={0}
+              maximumValue={100}
+              step={1}
+              value={rangeValue}
+              onValueChange={setRangeValue}
+            />
+          </View>
+        );
+      case "SearchBar":
+        return (
+          <SearchBar
+            value={searchValue}
+            onChangeText={setSearchValue}
+            onClear={() => setSearchValue("")}
+            placeholder="Search..."
           />
-        </Card>
+        );
+      case "Segment":
+        return (
+          <Segment
+            options={["Daily", "Weekly", "Monthly"]}
+            selectedIndex={segmentIndex}
+            onChange={setSegmentIndex}
+          />
+        );
+      case "Select":
+        return (
+          <Select
+            items={[
+              { label: "Java", value: "java" },
+              { label: "Detail", value: "js" },
+            ]}
+            selectedValue={selectValue}
+            onValueChange={setSelectValue}
+            label="Language"
+          />
+        );
+      case "Toggle":
+        return <Toggle value={toggleValue} onValueChange={setToggleValue} />;
+      case "Interactions":
+        return (
+          <View style={{ gap: spacing.m }}>
+            <Button
+              title="Alert"
+              variant="secondary"
+              onPress={() => Alert.alert("Alert!")}
+            />
+            <Button
+              title="Toast"
+              variant="success"
+              onPress={() => Toast.show({ type: "success", text1: "Toast" })}
+            />
+            <Button
+              title="Modal"
+              variant="primary"
+              onPress={() => setModalVisible(true)}
+            />
+            <Button
+              title="Bottom Sheet"
+              variant="outline"
+              onPress={handlePresentModalPress}
+            />
+          </View>
+        );
+      default:
+        return (
+          <Text style={{ color: colors.text }}>
+            Select a component to view.
+          </Text>
+        );
+    }
+  };
 
-        <Button
-          title="Done"
-          onPress={() => Alert.alert("Nice!", "All components rendered.")}
-        />
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+      <Header title={title || "Detail"} showBack={true} />
+      <ScrollView
+        contentContainerStyle={{ padding: spacing.m, paddingBottom: 100 }}
+      >
+        {renderContent()}
       </ScrollView>
+
+      {/* Interactive Modals */}
+      <BottomSheetModal
+        ref={bottomSheetModalRef}
+        index={1}
+        snapPoints={snapPoints}
+        backdropComponent={renderBackdrop}
+        backgroundStyle={{ backgroundColor: colors.surface }}
+        handleIndicatorStyle={{ backgroundColor: colors.placeholder }}
+      >
+        <BottomSheetView style={{ flex: 1, padding: spacing.m }}>
+          <Text style={{ color: colors.text }}>Bottom Sheet Content</Text>
+        </BottomSheetView>
+      </BottomSheetModal>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.centeredView}>
+          <View style={[styles.modalView, { backgroundColor: colors.surface }]}>
+            <Text style={[styles.modalText, { color: colors.text }]}>
+              Modal Content
+            </Text>
+            <Button title="Close" onPress={() => setModalVisible(false)} />
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
-};
+}
 
-export default DetailScreen;
+const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0,0,0,0.5)",
+  },
+  modalView: {
+    margin: 20,
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+});
