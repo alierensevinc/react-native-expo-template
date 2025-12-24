@@ -1,12 +1,12 @@
-import { View, Text, Switch } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useNavigation } from "@react-navigation/native";
-import { useLayoutEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useNavigation } from '@react-navigation/native';
+import { useLayoutEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { View, Text, Switch } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { useTheme } from "../context/ThemeContext";
-import Card from "../components/Card";
-import Header from "../components/Header";
+import Card from '../components/Card';
+import Header from '../components/Header';
+import { useTheme } from '../context/ThemeContext';
 
 export default function HomeScreen() {
   const { t } = useTranslation();
@@ -27,9 +27,9 @@ export default function HomeScreen() {
         {/* Theme Toggle */}
         <View
           style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             marginBottom: spacing.l,
           }}
         >
@@ -40,24 +40,24 @@ export default function HomeScreen() {
               fontWeight: typography.weights.bold,
             }}
           >
-            {isDark ? "Dark Mode" : "Light Mode"}
+            {isDark ? 'Dark Mode' : 'Light Mode'}
           </Text>
           <Switch
             value={isDark}
             onValueChange={toggleTheme}
-            thumbColor={isDark ? colors.primary : "#f4f3f4"}
-            trackColor={{ false: "#767577", true: colors.secondary }}
+            thumbColor={isDark ? colors.primary : '#f4f3f4'}
+            trackColor={{ false: '#767577', true: colors.secondary }}
           />
         </View>
 
         {/* Navigation to Components */}
-        <Card onPress={() => navigation.navigate("Components")}>
+        <Card onPress={() => navigation.navigate('Components')}>
           <Text
             style={{
               color: colors.primary,
               fontSize: typography.sizes.title,
               fontWeight: typography.weights.bold,
-              textAlign: "center",
+              textAlign: 'center',
             }}
           >
             View All Components
@@ -65,7 +65,7 @@ export default function HomeScreen() {
           <Text
             style={{
               color: colors.text,
-              textAlign: "center",
+              textAlign: 'center',
               marginTop: spacing.s,
             }}
           >

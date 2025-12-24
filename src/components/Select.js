@@ -1,7 +1,8 @@
-import React, { useMemo } from "react";
-import { View, Text, StyleSheet, Platform } from "react-native";
-import { Picker } from "@react-native-picker/picker";
-import { useTheme } from "../context/ThemeContext";
+import { Picker } from '@react-native-picker/picker';
+import React, { useMemo } from 'react';
+import { View, Text, StyleSheet, Platform } from 'react-native';
+
+import { useTheme } from '../context/ThemeContext';
 
 const Select = ({
   selectedValue,
@@ -29,8 +30,8 @@ const Select = ({
           borderRadius: theme.spacing.s,
           borderWidth: 1,
           borderColor: theme.colors.disabled,
-          overflow: "hidden",
-          justifyContent: "center", // Important for centering picker content
+          overflow: 'hidden',
+          justifyContent: 'center', // Important for centering picker content
           ...Platform.select({
             ios: {
               height: 120, // Increased height for iOS wheel
@@ -41,7 +42,7 @@ const Select = ({
           }),
         },
         picker: {
-          width: "100%",
+          width: '100%',
           ...Platform.select({
             ios: {
               height: 120,

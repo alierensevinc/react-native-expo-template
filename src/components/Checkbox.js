@@ -1,5 +1,6 @@
-import React, { useMemo, useEffect } from "react";
-import { Pressable, View, Text, StyleSheet } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
+import React, { useMemo, useEffect } from 'react';
+import { Pressable, View, Text, StyleSheet } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   withTiming,
@@ -7,9 +8,9 @@ import Animated, {
   useDerivedValue,
   ZoomIn,
   ZoomOut,
-} from "react-native-reanimated";
-import { Ionicons } from "@expo/vector-icons";
-import { useTheme } from "../context/ThemeContext";
+} from 'react-native-reanimated';
+
+import { useTheme } from '../context/ThemeContext';
 
 const Checkbox = ({ checked, onChange, label, style }) => {
   const theme = useTheme();
@@ -23,8 +24,8 @@ const Checkbox = ({ checked, onChange, label, style }) => {
     () =>
       StyleSheet.create({
         container: {
-          flexDirection: "row",
-          alignItems: "center",
+          flexDirection: 'row',
+          alignItems: 'center',
           marginVertical: theme.spacing.xs,
         },
         box: {
@@ -32,8 +33,8 @@ const Checkbox = ({ checked, onChange, label, style }) => {
           height: 24,
           borderRadius: 4,
           borderWidth: 2,
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: 'center',
+          alignItems: 'center',
           marginRight: theme.spacing.s,
         },
         label: {
@@ -48,7 +49,7 @@ const Checkbox = ({ checked, onChange, label, style }) => {
     const backgroundColor = interpolateColor(
       progress.value,
       [0, 1],
-      ["transparent", theme.colors.primary]
+      ['transparent', theme.colors.primary]
     );
 
     const borderColor = interpolateColor(

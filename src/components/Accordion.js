@@ -1,20 +1,21 @@
-import React, { useMemo, useState } from "react";
+import { Ionicons } from '@expo/vector-icons';
+import React, { useMemo, useState } from 'react';
 import {
   View,
   Text,
   Pressable,
   StyleSheet,
   LayoutAnimation,
-} from "react-native";
+} from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
   FadeInUp,
   FadeOutUp,
-} from "react-native-reanimated";
-import { Ionicons } from "@expo/vector-icons";
-import { useTheme } from "../context/ThemeContext";
+} from 'react-native-reanimated';
+
+import { useTheme } from '../context/ThemeContext';
 
 const Accordion = ({ title, children, style }) => {
   const theme = useTheme();
@@ -42,15 +43,15 @@ const Accordion = ({ title, children, style }) => {
         container: {
           backgroundColor: theme.colors.surface,
           borderRadius: theme.spacing.s,
-          overflow: "hidden",
+          overflow: 'hidden',
           marginBottom: theme.spacing.s,
           borderWidth: 1,
           borderColor: theme.colors.disabled,
         },
         header: {
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
           padding: theme.spacing.m,
         },
         title: {

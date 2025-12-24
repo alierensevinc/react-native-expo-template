@@ -1,37 +1,38 @@
-import React, { useMemo } from "react";
-import { Pressable, StyleSheet } from "react-native";
-import { useTheme } from "../context/ThemeContext";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons } from '@expo/vector-icons';
+import React, { useMemo } from 'react';
+import { Pressable, StyleSheet } from 'react-native';
 
-const FAB = ({ icon, onPress, color, style, position = "bottom-right" }) => {
+import { useTheme } from '../context/ThemeContext';
+
+const FAB = ({ icon, onPress, color, style, position = 'bottom-right' }) => {
   const theme = useTheme();
 
   const styles = useMemo(
     () =>
       StyleSheet.create({
         container: {
-          position: "absolute",
+          position: 'absolute',
           width: 56,
           height: 56,
           borderRadius: 28,
           backgroundColor: color || theme.colors.secondary,
-          justifyContent: "center",
-          alignItems: "center",
-          shadowColor: "#000",
+          justifyContent: 'center',
+          alignItems: 'center',
+          shadowColor: '#000',
           shadowOffset: { width: 0, height: 4 },
           shadowOpacity: 0.3,
           shadowRadius: 4,
           elevation: 6,
-          ...(position === "bottom-right" && {
+          ...(position === 'bottom-right' && {
             bottom: theme.spacing.l,
             right: theme.spacing.l,
           }),
-          ...(position === "bottom-left" && {
+          ...(position === 'bottom-left' && {
             bottom: theme.spacing.l,
             left: theme.spacing.l,
           }),
-          ...(position === "center" && {
-            alignSelf: "center",
+          ...(position === 'center' && {
+            alignSelf: 'center',
             bottom: theme.spacing.l,
           }),
         },
@@ -51,7 +52,7 @@ const FAB = ({ icon, onPress, color, style, position = "bottom-right" }) => {
         style,
       ]}
     >
-      <Ionicons name={icon || "add"} size={24} color="#FFF" />
+      <Ionicons name={icon || 'add'} size={24} color="#FFF" />
     </Pressable>
   );
 };

@@ -1,8 +1,9 @@
-import React, { useMemo } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { useTheme } from "../context/ThemeContext";
-import Button from "./Button";
+import { Ionicons } from '@expo/vector-icons';
+import React, { useMemo } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+import Button from './Button';
+import { useTheme } from '../context/ThemeContext';
 
 const EmptyState = ({
   icon,
@@ -18,8 +19,8 @@ const EmptyState = ({
     () =>
       StyleSheet.create({
         container: {
-          alignItems: "center",
-          justifyContent: "center",
+          alignItems: 'center',
+          justifyContent: 'center',
           padding: theme.spacing.xl,
         },
         title: {
@@ -27,14 +28,14 @@ const EmptyState = ({
           fontSize: theme.typography.sizes.title,
           fontWeight: theme.typography.weights.bold,
           marginTop: theme.spacing.m,
-          textAlign: "center",
+          textAlign: 'center',
         },
         description: {
           color: theme.colors.placeholder,
           fontSize: theme.typography.sizes.body,
           marginTop: theme.spacing.s,
           marginBottom: theme.spacing.l,
-          textAlign: "center",
+          textAlign: 'center',
         },
       }),
     [theme]
@@ -43,7 +44,7 @@ const EmptyState = ({
   return (
     <View style={[styles.container, style]}>
       <Ionicons
-        name={icon || "file-tray-outline"}
+        name={icon || 'file-tray-outline'}
         size={64}
         color={theme.colors.disabled}
       />

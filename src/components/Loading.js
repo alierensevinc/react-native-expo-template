@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
+import React, { useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -7,16 +8,16 @@ import Animated, {
   withTiming,
   Easing,
   cancelAnimation,
-} from "react-native-reanimated";
-import { Ionicons } from "@expo/vector-icons";
-import { useTheme } from "../context/ThemeContext";
+} from 'react-native-reanimated';
 
-const Loading = ({ size = "large", color }) => {
+import { useTheme } from '../context/ThemeContext';
+
+const Loading = ({ size = 'large', color }) => {
   const theme = useTheme();
   const rotation = useSharedValue(0);
 
   const spinnerColor = color || theme.colors.primary;
-  const iconSize = size === "small" ? 24 : size === "large" ? 48 : 32;
+  const iconSize = size === 'small' ? 24 : size === 'large' ? 48 : 32;
 
   useEffect(() => {
     rotation.value = withRepeat(
@@ -46,8 +47,8 @@ const Loading = ({ size = "large", color }) => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: 10,
   },
 });

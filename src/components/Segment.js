@@ -1,17 +1,18 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState } from 'react';
 import {
   View,
   Text,
   Pressable,
   StyleSheet,
   LayoutChangeEvent,
-} from "react-native";
+} from 'react-native';
 import Animated, {
   useAnimatedStyle,
   withSpring,
   withTiming,
-} from "react-native-reanimated";
-import { useTheme } from "../context/ThemeContext";
+} from 'react-native-reanimated';
+
+import { useTheme } from '../context/ThemeContext';
 
 const Segment = ({ options, selectedIndex, onChange, style }) => {
   const theme = useTheme();
@@ -25,7 +26,7 @@ const Segment = ({ options, selectedIndex, onChange, style }) => {
     () =>
       StyleSheet.create({
         container: {
-          flexDirection: "row",
+          flexDirection: 'row',
           backgroundColor: theme.colors.surface,
           borderRadius: theme.spacing.s,
           padding: 2,
@@ -34,7 +35,7 @@ const Segment = ({ options, selectedIndex, onChange, style }) => {
           height: 40,
         },
         slider: {
-          position: "absolute",
+          position: 'absolute',
           top: 2,
           bottom: 2,
           left: 2,
@@ -43,8 +44,8 @@ const Segment = ({ options, selectedIndex, onChange, style }) => {
         },
         item: {
           flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
+          alignItems: 'center',
+          justifyContent: 'center',
           borderRadius: theme.spacing.s - 2,
           zIndex: 1,
         },
@@ -54,7 +55,7 @@ const Segment = ({ options, selectedIndex, onChange, style }) => {
           color: theme.colors.text,
         },
         selectedText: {
-          color: "white",
+          color: 'white',
         },
       }),
     [theme]

@@ -1,12 +1,13 @@
-import React, { useMemo } from "react";
-import { Pressable, StyleSheet } from "react-native";
+import React, { useMemo } from 'react';
+import { Pressable, StyleSheet } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   withTiming,
   interpolateColor,
   useDerivedValue,
-} from "react-native-reanimated";
-import { useTheme } from "../context/ThemeContext";
+} from 'react-native-reanimated';
+
+import { useTheme } from '../context/ThemeContext';
 
 const Toggle = ({ value, onValueChange, style }) => {
   const theme = useTheme();
@@ -24,14 +25,14 @@ const Toggle = ({ value, onValueChange, style }) => {
           height: 30,
           borderRadius: 15,
           padding: 2,
-          justifyContent: "center",
+          justifyContent: 'center',
         },
         knob: {
           width: 26,
           height: 26,
           borderRadius: 13,
-          backgroundColor: "white",
-          shadowColor: "#000",
+          backgroundColor: 'white',
+          shadowColor: '#000',
           shadowOffset: { width: 0, height: 2 },
           shadowOpacity: 0.2,
           shadowRadius: 2.5,

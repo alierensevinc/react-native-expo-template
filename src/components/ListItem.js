@@ -1,7 +1,8 @@
-import React, { useMemo } from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
-import { useTheme } from "../context/ThemeContext";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons } from '@expo/vector-icons';
+import React, { useMemo } from 'react';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
+
+import { useTheme } from '../context/ThemeContext';
 
 const ListItem = ({
   left,
@@ -18,8 +19,8 @@ const ListItem = ({
     () =>
       StyleSheet.create({
         container: {
-          flexDirection: "row",
-          alignItems: "center",
+          flexDirection: 'row',
+          alignItems: 'center',
           padding: theme.spacing.m,
           backgroundColor: theme.colors.surface,
           borderBottomWidth: divider ? 1 : 0,

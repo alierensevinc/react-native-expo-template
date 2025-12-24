@@ -1,7 +1,8 @@
-import React, { useMemo } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import Slider from "@react-native-community/slider";
-import { useTheme } from "../context/ThemeContext";
+import Slider from '@react-native-community/slider';
+import React, { useMemo } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+import { useTheme } from '../context/ThemeContext';
 
 const Range = ({
   min = 0,
@@ -21,8 +22,8 @@ const Range = ({
           marginVertical: theme.spacing.s,
         },
         labelContainer: {
-          flexDirection: "row",
-          justifyContent: "space-between",
+          flexDirection: 'row',
+          justifyContent: 'space-between',
           marginBottom: theme.spacing.xs,
         },
         label: {
@@ -32,7 +33,7 @@ const Range = ({
         value: {
           color: theme.colors.primary,
           fontSize: theme.typography.sizes.caption,
-          fontWeight: "bold",
+          fontWeight: 'bold',
         },
       }),
     [theme]
@@ -47,7 +48,7 @@ const Range = ({
         </View>
       )}
       <Slider
-        style={{ width: "100%", height: 40 }}
+        style={{ width: '100%', height: 40 }}
         minimumValue={min}
         maximumValue={max}
         step={step}

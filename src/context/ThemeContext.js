@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useMemo } from "react";
-import { lightTheme, darkTheme } from "../theme";
+import { createContext, useContext, useState, useMemo } from 'react';
+
+import { lightTheme, darkTheme } from '../theme';
 
 const ThemeContext = createContext();
 
@@ -37,7 +38,7 @@ export const ThemeProvider = ({ children }) => {
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
+    throw new Error('useTheme must be used within a ThemeProvider');
   }
   return context;
 };

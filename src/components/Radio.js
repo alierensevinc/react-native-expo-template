@@ -1,11 +1,12 @@
-import React, { useMemo } from "react";
-import { Pressable, View, Text, StyleSheet } from "react-native";
+import React, { useMemo } from 'react';
+import { Pressable, View, Text, StyleSheet } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   withSpring,
   withTiming,
-} from "react-native-reanimated";
-import { useTheme } from "../context/ThemeContext";
+} from 'react-native-reanimated';
+
+import { useTheme } from '../context/ThemeContext';
 
 const Radio = ({ selected, onChange, label, style }) => {
   const theme = useTheme();
@@ -14,8 +15,8 @@ const Radio = ({ selected, onChange, label, style }) => {
     () =>
       StyleSheet.create({
         container: {
-          flexDirection: "row",
-          alignItems: "center",
+          flexDirection: 'row',
+          alignItems: 'center',
           marginVertical: theme.spacing.xs,
         },
         outerCircle: {
@@ -23,8 +24,8 @@ const Radio = ({ selected, onChange, label, style }) => {
           height: 24,
           borderRadius: 12,
           borderWidth: 2,
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: 'center',
+          alignItems: 'center',
           marginRight: theme.spacing.s,
         },
         innerCircle: {

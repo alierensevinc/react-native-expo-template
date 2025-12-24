@@ -1,18 +1,19 @@
-import { useCallback, useEffect, useState } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
-import * as SplashScreen from "expo-splash-screen";
-import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
-import Toast from "react-native-toast-message";
-import "./src/i18n";
-import { ThemeProvider } from "./src/context/ThemeContext";
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
+import { useCallback, useEffect, useState } from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
 
-import HomeScreen from "./src/screens/HomeScreen";
-import DetailScreen from "./src/screens/DetailScreen";
-import ComponentsScreen from "./src/screens/ComponentsScreen";
+import './src/i18n';
+import { QueryProvider } from './src/context/QueryProvider';
+import { ThemeProvider } from './src/context/ThemeContext';
+import ComponentsScreen from './src/screens/ComponentsScreen';
+import DetailScreen from './src/screens/DetailScreen';
+import HomeScreen from './src/screens/HomeScreen';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -59,12 +60,14 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <ThemeProvider>
         <SafeAreaProvider>
-          <BottomSheetModalProvider>
-            <StatusBar style="auto" />
-            <NavigationContainer>
-              <RootStack />
-            </NavigationContainer>
-          </BottomSheetModalProvider>
+          <QueryProvider>
+            <BottomSheetModalProvider>
+              <StatusBar style="auto" />
+              <NavigationContainer>
+                <RootStack />
+              </NavigationContainer>
+            </BottomSheetModalProvider>
+          </QueryProvider>
         </SafeAreaProvider>
       </ThemeProvider>
       <Toast />

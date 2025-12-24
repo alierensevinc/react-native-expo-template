@@ -1,12 +1,13 @@
-import React, { useMemo, useState, useEffect } from "react";
-import { View, TextInput, Text, StyleSheet, Pressable } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
+import React, { useMemo, useState, useEffect } from 'react';
+import { View, TextInput, Text, StyleSheet, Pressable } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   withTiming,
   interpolateColor,
-} from "react-native-reanimated";
-import { Ionicons } from "@expo/vector-icons";
-import { useTheme } from "../context/ThemeContext";
+} from 'react-native-reanimated';
+
+import { useTheme } from '../context/ThemeContext';
 
 const Input = ({
   label,
@@ -22,7 +23,7 @@ const Input = ({
 }) => {
   const theme = useTheme();
   const [isFocused, setIsFocused] = useState(false);
-  const [internalValue, setInternalValue] = useState("");
+  const [internalValue, setInternalValue] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   // Handle controlled vs uncontrolled value
@@ -44,8 +45,8 @@ const Input = ({
           marginBottom: theme.spacing.m,
         },
         inputContainer: {
-          flexDirection: "row",
-          alignItems: "center",
+          flexDirection: 'row',
+          alignItems: 'center',
           borderWidth: 1,
           borderRadius: theme.spacing.s,
           paddingHorizontal: theme.spacing.s,
@@ -58,15 +59,15 @@ const Input = ({
           fontSize: theme.typography.sizes.body,
           paddingHorizontal: theme.spacing.s,
           paddingTop: label ? 18 : 0, // Push text down if label exists
-          height: "100%",
+          height: '100%',
         },
         labelContainer: {
-          position: "absolute",
+          position: 'absolute',
           left: leftIcon ? 40 : 12, // Adjust based on icon
           top: 0,
           bottom: 0,
-          justifyContent: "center",
-          pointerEvents: "none", // Let clicks pass through to input
+          justifyContent: 'center',
+          pointerEvents: 'none', // Let clicks pass through to input
         },
         label: {
           fontSize: theme.typography.sizes.body,
@@ -79,8 +80,8 @@ const Input = ({
         },
         iconContainer: {
           width: 24,
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: 'center',
+          alignItems: 'center',
         },
       }),
     [theme, leftIcon, label]
@@ -102,8 +103,8 @@ const Input = ({
         error
           ? theme.colors.error
           : isFocused
-          ? theme.colors.primary
-          : theme.colors.placeholder,
+            ? theme.colors.primary
+            : theme.colors.placeholder,
         { duration: 200 }
       ),
     };
@@ -136,7 +137,7 @@ const Input = ({
           )}
           <TextInput
             style={styles.input}
-            placeholder={isFocused && !label ? props.placeholder : ""} // Only show placeholder if focused or no label
+            placeholder={isFocused && !label ? props.placeholder : ''} // Only show placeholder if focused or no label
             placeholderTextColor={theme.colors.placeholder}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
@@ -154,7 +155,7 @@ const Input = ({
             hitSlop={10}
           >
             <Ionicons
-              name={isPasswordVisible ? "eye-off" : "eye"}
+              name={isPasswordVisible ? 'eye-off' : 'eye'}
               size={20}
               color={theme.colors.placeholder}
             />

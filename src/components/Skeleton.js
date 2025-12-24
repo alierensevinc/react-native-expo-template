@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withRepeat,
   withTiming,
   withSequence,
-} from "react-native-reanimated";
-import { useTheme } from "../context/ThemeContext";
+} from 'react-native-reanimated';
 
-const Skeleton = ({ width, height, radius, style, variant = "rect" }) => {
+import { useTheme } from '../context/ThemeContext';
+
+const Skeleton = ({ width, height, radius, style, variant = 'rect' }) => {
   const theme = useTheme();
   const opacity = useSharedValue(0.3);
 
@@ -29,10 +30,10 @@ const Skeleton = ({ width, height, radius, style, variant = "rect" }) => {
   }));
 
   const baseStyle = {
-    width: width || "100%",
+    width: width || '100%',
     height: height || 20,
     backgroundColor: theme.colors.disabled,
-    borderRadius: variant === "circle" ? (width || height) / 2 : radius || 4,
+    borderRadius: variant === 'circle' ? (width || height) / 2 : radius || 4,
   };
 
   return <Animated.View style={[baseStyle, animatedStyle, style]} />;

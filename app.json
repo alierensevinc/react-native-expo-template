@@ -19,9 +19,6 @@
     "android": {
       "package": "com.sevincaeren.rnexpotemplate"
     },
-    "plugins": [
-      "expo-font",
-      "@react-native-community/datetimepicker"
-    ]
+    "plugins": ["expo-font", "@react-native-community/datetimepicker"]
   }
 }

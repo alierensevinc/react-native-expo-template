@@ -1,18 +1,19 @@
-import React, { useMemo } from "react";
-import { Text, Pressable, ActivityIndicator, StyleSheet } from "react-native";
+import React, { useMemo } from 'react';
+import { Text, Pressable, ActivityIndicator, StyleSheet } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-} from "react-native-reanimated";
-import { useTheme } from "../context/ThemeContext";
+} from 'react-native-reanimated';
+
+import { useTheme } from '../context/ThemeContext';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 const Button = ({
   title,
   onPress,
-  variant = "primary", // primary, secondary, outline
+  variant = 'primary', // primary, secondary, outline
   loading = false,
   disabled = false,
   style,
@@ -24,12 +25,12 @@ const Button = ({
   const getBackgroundColor = () => {
     if (disabled) return theme.colors.disabled;
     switch (variant) {
-      case "primary":
+      case 'primary':
         return theme.colors.primary;
-      case "secondary":
+      case 'secondary':
         return theme.colors.secondary;
-      case "outline":
-        return "transparent";
+      case 'outline':
+        return 'transparent';
       default:
         return theme.colors.primary;
     }
@@ -38,14 +39,14 @@ const Button = ({
   const getTextColor = () => {
     if (disabled) return theme.colors.placeholder;
     switch (variant) {
-      case "primary":
-        return "#FFFFFF";
-      case "secondary":
-        return "#000000";
-      case "outline":
+      case 'primary':
+        return '#FFFFFF';
+      case 'secondary':
+        return '#000000';
+      case 'outline':
         return theme.colors.primary;
       default:
-        return "#FFFFFF";
+        return '#FFFFFF';
     }
   };
 
@@ -56,13 +57,13 @@ const Button = ({
           paddingVertical: theme.spacing.m,
           paddingHorizontal: theme.spacing.l,
           borderRadius: theme.spacing.s,
-          alignItems: "center",
-          justifyContent: "center",
-          borderWidth: variant === "outline" ? 1 : 0,
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderWidth: variant === 'outline' ? 1 : 0,
           borderColor:
-            variant === "outline" ? theme.colors.primary : "transparent",
+            variant === 'outline' ? theme.colors.primary : 'transparent',
           backgroundColor: getBackgroundColor(),
-          flexDirection: "row",
+          flexDirection: 'row',
         },
         text: {
           color: getTextColor(),

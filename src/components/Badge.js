@@ -1,6 +1,7 @@
-import React, { useMemo } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { useTheme } from "../context/ThemeContext";
+import React, { useMemo } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+import { useTheme } from '../context/ThemeContext';
 
 const Badge = ({ content, color, size = 20, style, textStyle }) => {
   const theme = useTheme();
@@ -13,14 +14,14 @@ const Badge = ({ content, color, size = 20, style, textStyle }) => {
           height: size,
           borderRadius: size / 2,
           backgroundColor: color || theme.colors.error,
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: 'center',
+          alignItems: 'center',
           paddingHorizontal: 6,
         },
         text: {
-          color: "#FFFFFF",
+          color: '#FFFFFF',
           fontSize: size * 0.6,
-          fontWeight: "bold",
+          fontWeight: 'bold',
         },
       }),
     [theme, size, color]

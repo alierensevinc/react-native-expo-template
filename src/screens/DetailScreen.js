@@ -1,40 +1,44 @@
-import React, { useState, useRef, useMemo } from "react";
-import { View, Text, ScrollView, Alert, Modal, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useTheme } from "../context/ThemeContext";
+import { Ionicons } from '@expo/vector-icons';
 import {
   BottomSheetModal,
   BottomSheetView,
   BottomSheetBackdrop,
-} from "@gorhom/bottom-sheet";
-import Toast from "react-native-toast-message";
-import Header from "../components/Header";
+} from '@gorhom/bottom-sheet';
+import { zodResolver } from '@hookform/resolvers/zod';
+import React, { useState, useRef, useMemo } from 'react';
+import { useForm } from 'react-hook-form';
+import { View, Text, ScrollView, Alert, Modal, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
+import { z } from 'zod';
+
+import Accordion from '../components/Accordion';
+import Avatar from '../components/Avatar';
+import Badge from '../components/Badge';
+import Button from '../components/Button';
+import Header from '../components/Header';
 
 // Components
-import Accordion from "../components/Accordion";
-import Button from "../components/Button";
-import Card from "../components/Card";
-import Checkbox from "../components/Checkbox";
-import Chip from "../components/Chip";
-import DateTime from "../components/DateTime";
-import Input from "../components/Input";
-import Loading from "../components/Loading";
-import ProgressBar from "../components/ProgressBar";
-import Radio from "../components/Radio";
-import Range from "../components/Range";
-import SearchBar from "../components/SearchBar";
-import Segment from "../components/Segment";
-import Select from "../components/Select";
-import Toggle from "../components/Toggle";
-import Avatar from "../components/Avatar";
-import Badge from "../components/Badge";
-import Divider from "../components/Divider";
-import ListItem from "../components/ListItem";
-import FAB from "../components/FAB";
-import Skeleton from "../components/Skeleton";
-import EmptyState from "../components/EmptyState";
-
-import { Ionicons } from "@expo/vector-icons";
+import Card from '../components/Card';
+import Checkbox from '../components/Checkbox';
+import Chip from '../components/Chip';
+import DateTime from '../components/DateTime';
+import Input from '../components/Input';
+import ListItem from '../components/ListItem';
+import Loading from '../components/Loading';
+import ProgressBar from '../components/ProgressBar';
+import Radio from '../components/Radio';
+import Range from '../components/Range';
+import SearchBar from '../components/SearchBar';
+import Segment from '../components/Segment';
+import Select from '../components/Select';
+import Skeleton from '../components/Skeleton';
+import Toggle from '../components/Toggle';
+import Divider from '../components/Divider';
+import FAB from '../components/FAB';
+import EmptyState from '../components/EmptyState';
+import FormInput from '../components/FormInput';
+import { useTheme } from '../context/ThemeContext';
 
 export default function DetailScreen({ route }) {
   const { component, title } = route.params || {};
@@ -44,26 +48,62 @@ export default function DetailScreen({ route }) {
   const [checkboxValue, setCheckboxValue] = useState(false);
   const [radioValue, setRadioValue] = useState(false);
   const [toggleValue, setToggleValue] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-  const [searchValue, setSearchValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
+  const [searchValue, setSearchValue] = useState('');
   const [segmentIndex, setSegmentIndex] = useState(0);
   const [dateValue, setDateValue] = useState(new Date());
   const [rangeValue, setRangeValue] = useState(50);
-  const [selectValue, setSelectValue] = useState("");
-  const [chips, setChips] = useState(["React", "Native", "Expo"]);
+  const [selectValue, setSelectValue] = useState('');
+  const [chips, setChips] = useState(['React', 'Native', 'Expo']);
   const [modalVisible, setModalVisible] = useState(false);
 
   // Bottom Sheet
   const bottomSheetModalRef = useRef(null);
-  const snapPoints = useMemo(() => ["25%", "50%"], []);
+  const snapPoints = useMemo(() => ['25%', '50%'], []);
   const handlePresentModalPress = () => bottomSheetModalRef.current?.present();
   const renderBackdrop = (props) => (
     <BottomSheetBackdrop {...props} disappearsOnIndex={-1} appearsOnIndex={0} />
   );
 
+  const LoginForm = () => {
+    const { colors, spacing } = useTheme();
+    const loginSchema = z.object({
+      email: z.string().email('Invalid email'),
+      password: z.string().min(6, 'Password must be at least 6 characters'),
+    });
+
+    const { control, handleSubmit } = useForm({
+      resolver: zodResolver(loginSchema),
+    });
+
+    const onSubmit = (data) => {
+      Alert.alert('Form Submitted', JSON.stringify(data));
+    };
+
+    return (
+      <View style={{ gap: spacing.m }}>
+        <Text style={{ color: colors.text }}>Login Form Demo</Text>
+        <FormInput
+          name="email"
+          control={control}
+          label="Email"
+          placeholder="Enter email"
+        />
+        <FormInput
+          name="password"
+          control={control}
+          label="Password"
+          secureTextEntry
+          placeholder="Enter password"
+        />
+        <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+      </View>
+    );
+  };
+
   const renderContent = () => {
     switch (component) {
-      case "Accordion":
+      case 'Accordion':
         return (
           <View>
             <Accordion title="Accordion 1">
@@ -76,7 +116,7 @@ export default function DetailScreen({ route }) {
             </Accordion>
           </View>
         );
-      case "Button":
+      case 'Button':
         return (
           <View style={{ gap: spacing.m }}>
             <Button title="Primary" variant="primary" onPress={() => {}} />
@@ -96,19 +136,19 @@ export default function DetailScreen({ route }) {
             />
           </View>
         );
-      case "Card":
+      case 'Card':
         return (
           <View style={{ gap: spacing.m }}>
             <Card>
-              <Text style={{ color: colors.text, fontWeight: "bold" }}>
+              <Text style={{ color: colors.text, fontWeight: 'bold' }}>
                 Basic Card
               </Text>
               <Text style={{ color: colors.text }}>
                 This is a simple card component.
               </Text>
             </Card>
-            <Card onPress={() => Alert.alert("Card Pressed")}>
-              <Text style={{ color: colors.primary, fontWeight: "bold" }}>
+            <Card onPress={() => Alert.alert('Card Pressed')}>
+              <Text style={{ color: colors.primary, fontWeight: 'bold' }}>
                 Pressable Card
               </Text>
               <Text style={{ color: colors.text }}>
@@ -117,11 +157,11 @@ export default function DetailScreen({ route }) {
             </Card>
           </View>
         );
-      case "Checkbox":
+      case 'Checkbox':
         return (
           <View style={{ gap: spacing.m }}>
             <Checkbox label="Unchecked" checked={false} onChange={() => {}} />
-            <Checkbox label="Checked" checked={true} onChange={() => {}} />
+            <Checkbox label="Checked" checked onChange={() => {}} />
             <Checkbox
               label="Interactive"
               checked={checkboxValue}
@@ -129,10 +169,10 @@ export default function DetailScreen({ route }) {
             />
           </View>
         );
-      case "Chip":
+      case 'Chip':
         return (
           <View
-            style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.s }}
+            style={{ flexDirection: 'row', flexWrap: 'wrap', gap: spacing.s }}
           >
             {chips.map((chip) => (
               <Chip
@@ -148,7 +188,7 @@ export default function DetailScreen({ route }) {
             />
           </View>
         );
-      case "DateTime":
+      case 'DateTime':
         return (
           <View style={{ gap: spacing.m }}>
             <Text style={{ color: colors.text }}>
@@ -160,7 +200,7 @@ export default function DetailScreen({ route }) {
             />
           </View>
         );
-      case "Input":
+      case 'Input':
         return (
           <View style={{ gap: spacing.m }}>
             <Input
@@ -176,17 +216,17 @@ export default function DetailScreen({ route }) {
             <Input label="Error" error="Invalid input" />
           </View>
         );
-      case "Loading":
+      case 'Loading':
         return (
           <View
-            style={{ flexDirection: "row", justifyContent: "space-around" }}
+            style={{ flexDirection: 'row', justifyContent: 'space-around' }}
           >
             <Loading size="small" />
             <Loading size="medium" />
             <Loading size="large" color={colors.secondary} />
           </View>
         );
-      case "ProgressBar":
+      case 'ProgressBar':
         return (
           <View style={{ gap: spacing.m }}>
             <ProgressBar progress={0.3} />
@@ -194,7 +234,7 @@ export default function DetailScreen({ route }) {
             <ProgressBar progress={1.0} />
           </View>
         );
-      case "Radio":
+      case 'Radio':
         return (
           <View style={{ gap: spacing.m }}>
             <Radio
@@ -209,7 +249,7 @@ export default function DetailScreen({ route }) {
             />
           </View>
         );
-      case "Range":
+      case 'Range':
         return (
           <View style={{ gap: spacing.m }}>
             <Text style={{ color: colors.text }}>Value: {rangeValue}</Text>
@@ -222,49 +262,49 @@ export default function DetailScreen({ route }) {
             />
           </View>
         );
-      case "SearchBar":
+      case 'SearchBar':
         return (
           <SearchBar
             value={searchValue}
             onChangeText={setSearchValue}
-            onClear={() => setSearchValue("")}
+            onClear={() => setSearchValue('')}
             placeholder="Search..."
           />
         );
-      case "Segment":
+      case 'Segment':
         return (
           <Segment
-            options={["Daily", "Weekly", "Monthly"]}
+            options={['Daily', 'Weekly', 'Monthly']}
             selectedIndex={segmentIndex}
             onChange={setSegmentIndex}
           />
         );
-      case "Select":
+      case 'Select':
         return (
           <Select
             items={[
-              { label: "Java", value: "java" },
-              { label: "Detail", value: "js" },
+              { label: 'Java', value: 'java' },
+              { label: 'Detail', value: 'js' },
             ]}
             selectedValue={selectValue}
             onValueChange={setSelectValue}
             label="Language"
           />
         );
-      case "Toggle":
+      case 'Toggle':
         return <Toggle value={toggleValue} onValueChange={setToggleValue} />;
-      case "Interactions":
+      case 'Interactions':
         return (
           <View style={{ gap: spacing.m }}>
             <Button
               title="Alert"
               variant="secondary"
-              onPress={() => Alert.alert("Alert!")}
+              onPress={() => Alert.alert('Alert!')}
             />
             <Button
               title="Toast"
               variant="success"
-              onPress={() => Toast.show({ type: "success", text1: "Toast" })}
+              onPress={() => Toast.show({ type: 'success', text1: 'Toast' })}
             />
             <Button
               title="Modal"
@@ -278,10 +318,10 @@ export default function DetailScreen({ route }) {
             />
           </View>
         );
-      case "Avatar":
+      case 'Avatar':
         return (
           <View
-            style={{ gap: spacing.m, flexDirection: "row", flexWrap: "wrap" }}
+            style={{ gap: spacing.m, flexDirection: 'row', flexWrap: 'wrap' }}
           >
             <Avatar initials="JD" size={40} />
             <Avatar
@@ -292,18 +332,18 @@ export default function DetailScreen({ route }) {
             <Avatar
               size={50}
               source={{
-                uri: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+                uri: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
               }}
             />
           </View>
         );
-      case "Badge":
+      case 'Badge':
         return (
           <View
             style={{
               gap: spacing.m,
-              flexDirection: "row",
-              alignItems: "center",
+              flexDirection: 'row',
+              alignItems: 'center',
             }}
           >
             <Badge content={5} />
@@ -312,12 +352,12 @@ export default function DetailScreen({ route }) {
               <Ionicons name="notifications" size={32} color={colors.text} />
               <Badge
                 content={3}
-                style={{ position: "absolute", top: -5, right: -5 }}
+                style={{ position: 'absolute', top: -5, right: -5 }}
               />
             </View>
           </View>
         );
-      case "Divider":
+      case 'Divider':
         return (
           <View style={{ gap: spacing.m }}>
             <Text style={{ color: colors.text }}>Horizontal</Text>
@@ -325,7 +365,7 @@ export default function DetailScreen({ route }) {
             <Text style={{ color: colors.text }}>Horizontal Thick</Text>
             <Divider width={4} color={colors.primary} />
             <View
-              style={{ flexDirection: "row", height: 50, alignItems: "center" }}
+              style={{ flexDirection: 'row', height: 50, alignItems: 'center' }}
             >
               <Text style={{ color: colors.text }}>Vertical</Text>
               <Divider
@@ -336,7 +376,7 @@ export default function DetailScreen({ route }) {
             </View>
           </View>
         );
-      case "ListItem":
+      case 'ListItem':
         return (
           <View>
             <ListItem
@@ -361,34 +401,34 @@ export default function DetailScreen({ route }) {
             />
           </View>
         );
-      case "FAB":
+      case 'FAB':
         return (
           <View
             style={{
               height: 300,
               backgroundColor: colors.surface,
-              position: "relative",
+              position: 'relative',
             }}
           >
             <Text style={{ color: colors.text, padding: spacing.m }}>
               FAB is positioned absolute relative to this container.
             </Text>
-            <FAB onPress={() => Alert.alert("FAB Pressed")} />
+            <FAB onPress={() => Alert.alert('FAB Pressed')} />
             <FAB
               position="bottom-left"
               color={colors.error}
               icon="trash"
-              onPress={() => Alert.alert("Delete")}
+              onPress={() => Alert.alert('Delete')}
             />
           </View>
         );
-      case "Skeleton":
+      case 'Skeleton':
         return (
           <View style={{ gap: spacing.m }}>
             <View
               style={{
-                flexDirection: "row",
-                alignItems: "center",
+                flexDirection: 'row',
+                alignItems: 'center',
                 gap: spacing.s,
               }}
             >
@@ -401,7 +441,7 @@ export default function DetailScreen({ route }) {
             <Skeleton height={150} radius={10} />
           </View>
         );
-      case "EmptyState":
+      case 'EmptyState':
         return (
           <EmptyState
             title="No Messages"
@@ -411,6 +451,8 @@ export default function DetailScreen({ route }) {
             onAction={() => {}}
           />
         );
+      case 'Forms':
+        return <LoginForm />;
       default:
         return (
           <Text style={{ color: colors.text }}>
@@ -422,7 +464,7 @@ export default function DetailScreen({ route }) {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-      <Header title={title || "Detail"} showBack={true} />
+      <Header title={title || 'Detail'} showBack />
       <ScrollView
         contentContainerStyle={{ padding: spacing.m, paddingBottom: 100 }}
       >
@@ -445,7 +487,7 @@ export default function DetailScreen({ route }) {
 
       <Modal
         animationType="slide"
-        transparent={true}
+        transparent
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
@@ -465,16 +507,16 @@ export default function DetailScreen({ route }) {
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   modalView: {
     margin: 20,
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 4,
@@ -482,8 +524,8 @@ const styles = StyleSheet.create({
   },
   modalText: {
     marginBottom: 15,
-    textAlign: "center",
-    fontWeight: "bold",
+    textAlign: 'center',
+    fontWeight: 'bold',
     fontSize: 18,
   },
 });

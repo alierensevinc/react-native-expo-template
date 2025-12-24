@@ -1,6 +1,7 @@
-import React, { useMemo } from "react";
-import { View, Text, Image, StyleSheet, Pressable } from "react-native";
-import { useTheme } from "../context/ThemeContext";
+import React, { useMemo } from 'react';
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
+
+import { useTheme } from '../context/ThemeContext';
 
 const Avatar = ({
   source,
@@ -20,16 +21,16 @@ const Avatar = ({
           height: size,
           borderRadius: size / 2,
           backgroundColor: backgroundColor || theme.colors.primary,
-          justifyContent: "center",
-          alignItems: "center",
-          overflow: "hidden",
+          justifyContent: 'center',
+          alignItems: 'center',
+          overflow: 'hidden',
         },
         image: {
-          width: "100%",
-          height: "100%",
+          width: '100%',
+          height: '100%',
         },
         text: {
-          color: "#FFFFFF",
+          color: '#FFFFFF',
           fontSize: size * 0.4,
           fontWeight: theme.typography.weights.medium,
         },
@@ -43,7 +44,7 @@ const Avatar = ({
         <Image source={source} style={styles.image} resizeMode="cover" />
       ) : (
         <Text style={styles.text}>
-          {initials ? initials.substring(0, 2).toUpperCase() : "?"}
+          {initials ? initials.substring(0, 2).toUpperCase() : '?'}
         </Text>
       )}
     </View>

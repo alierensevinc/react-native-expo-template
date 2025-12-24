@@ -7,7 +7,7 @@ Comprehensive guide to using the theme-aware UI components in this project.
 All components automatically adapt to the active theme.
 
 ```javascript
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from '../context/ThemeContext';
 // const { colors, spacing, typography, isDark, toggleTheme } = useTheme();
 ```
 
@@ -20,7 +20,7 @@ import { useTheme } from "../context/ThemeContext";
 Expandable content panel.
 
 ```javascript
-import Accordion from "../components/Accordion";
+import Accordion from '../components/Accordion';
 
 <Accordion title="Section Title">
   <Text>Hidden content goes here.</Text>
@@ -37,7 +37,7 @@ import Accordion from "../components/Accordion";
 Standard button with variants.
 
 ```javascript
-import Button from "../components/Button";
+import Button from '../components/Button';
 
 <Button title="Save" onPress={handleSave} variant="primary" />;
 ```
@@ -78,7 +78,7 @@ import Card from '../components/Card';
 Boolean selection input.
 
 ```javascript
-import Checkbox from "../components/Checkbox";
+import Checkbox from '../components/Checkbox';
 
 <Checkbox label="Accept Terms" checked={isChecked} onChange={setIsChecked} />;
 ```
@@ -114,7 +114,7 @@ import Chip from '../components/Chip';
 Date and time picker wrapper.
 
 ```javascript
-import DateTime from "../components/DateTime";
+import DateTime from '../components/DateTime';
 
 <DateTime
   value={date}
@@ -134,7 +134,7 @@ import DateTime from "../components/DateTime";
 Standard screen header.
 
 ```javascript
-import Header from "../components/Header";
+import Header from '../components/Header';
 
 <Header title="My Screen" showBack={true} />;
 ```
@@ -176,7 +176,7 @@ import Input from '../components/Input';
 Activity indicator.
 
 ```javascript
-import Loading from "../components/Loading";
+import Loading from '../components/Loading';
 
 <Loading size="large" />;
 ```
@@ -191,7 +191,7 @@ import Loading from "../components/Loading";
 Linear progress indicator.
 
 ```javascript
-import ProgressBar from "../components/ProgressBar";
+import ProgressBar from '../components/ProgressBar';
 
 <ProgressBar progress={0.5} />;
 ```
@@ -205,12 +205,12 @@ import ProgressBar from "../components/ProgressBar";
 Single selection indicator.
 
 ```javascript
-import Radio from "../components/Radio";
+import Radio from '../components/Radio';
 
 <Radio
   label="Option A"
-  selected={selected === "A"}
-  onChange={() => setSelected("A")}
+  selected={selected === 'A'}
+  onChange={() => setSelected('A')}
 />;
 ```
 
@@ -225,7 +225,7 @@ import Radio from "../components/Radio";
 Slider control.
 
 ```javascript
-import Range from "../components/Range";
+import Range from '../components/Range';
 
 <Range
   value={val}
@@ -243,12 +243,12 @@ import Range from "../components/Range";
 Specialized input for search.
 
 ```javascript
-import SearchBar from "../components/SearchBar";
+import SearchBar from '../components/SearchBar';
 
 <SearchBar
   value={query}
   onChangeText={setQuery}
-  onClear={() => setQuery("")}
+  onClear={() => setQuery('')}
 />;
 ```
 
@@ -261,10 +261,10 @@ import SearchBar from "../components/SearchBar";
 Tab-like control for mode switching.
 
 ```javascript
-import Segment from "../components/Segment";
+import Segment from '../components/Segment';
 
 <Segment
-  options={["Day", "Week", "Month"]}
+  options={['Day', 'Week', 'Month']}
   selectedIndex={index}
   onChange={setIndex}
 />;
@@ -281,13 +281,13 @@ import Segment from "../components/Segment";
 Dropdown picker wrapper.
 
 ```javascript
-import Select from "../components/Select";
+import Select from '../components/Select';
 
 <Select
   label="Language"
   items={[
-    { label: "English", value: "en" },
-    { label: "Turkish", value: "tr" },
+    { label: 'English', value: 'en' },
+    { label: 'Turkish', value: 'tr' },
   ]}
   selectedValue={lang}
   onValueChange={setLang}
@@ -305,7 +305,7 @@ import Select from "../components/Select";
 Switch control.
 
 ```javascript
-import Toggle from "../components/Toggle";
+import Toggle from '../components/Toggle';
 
 <Toggle value={isOn} onValueChange={setIsOn} />;
 ```
@@ -338,7 +338,7 @@ import Avatar from '../components/Avatar';
 Notification indicator.
 
 ```javascript
-import Badge from "../components/Badge";
+import Badge from '../components/Badge';
 
 <Badge content={3} color="red" />;
 ```
@@ -354,7 +354,7 @@ import Badge from "../components/Badge";
 Visual separator.
 
 ```javascript
-import Divider from "../components/Divider";
+import Divider from '../components/Divider';
 
 <Divider orientation="horizontal" />;
 ```
@@ -369,7 +369,7 @@ import Divider from "../components/Divider";
 Standard list row.
 
 ```javascript
-import ListItem from "../components/ListItem";
+import ListItem from '../components/ListItem';
 
 <ListItem
   title="Profile"
@@ -390,7 +390,7 @@ import ListItem from "../components/ListItem";
 Floating Action Button.
 
 ```javascript
-import FAB from "../components/FAB";
+import FAB from '../components/FAB';
 
 <FAB icon="add" onPress={addItem} position="bottom-right" />;
 ```
@@ -421,7 +421,7 @@ import Skeleton from '../components/Skeleton';
 Placeholder for empty content.
 
 ```javascript
-import EmptyState from "../components/EmptyState";
+import EmptyState from '../components/EmptyState';
 
 <EmptyState
   title="No Data"
@@ -452,7 +452,7 @@ const bottomSheetRef = useRef(null);
 bottomSheetRef.current?.present();
 
 // Render
-<BottomSheetModal ref={bottomSheetRef} snapPoints={["25%", "50%"]}>
+<BottomSheetModal ref={bottomSheetRef} snapPoints={['25%', '50%']}>
   <View>
     <Text>Content</Text>
   </View>
@@ -464,6 +464,6 @@ bottomSheetRef.current?.present();
 Requires `<Toast />` in root.
 
 ```javascript
-import Toast from "react-native-toast-message";
-Toast.show({ type: "success", text1: "Saved!" });
+import Toast from 'react-native-toast-message';
+Toast.show({ type: 'success', text1: 'Saved!' });
 ```

@@ -1,11 +1,12 @@
-import React, { useMemo } from "react";
-import { Pressable } from "react-native";
+import React, { useMemo } from 'react';
+import { Pressable } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-} from "react-native-reanimated";
-import { useTheme } from "../context/ThemeContext";
+} from 'react-native-reanimated';
+
+import { useTheme } from '../context/ThemeContext';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 

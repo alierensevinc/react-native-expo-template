@@ -1,11 +1,12 @@
-import React, { useMemo, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useMemo, useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
-} from "react-native-reanimated";
-import { useTheme } from "../context/ThemeContext";
+} from 'react-native-reanimated';
+
+import { useTheme } from '../context/ThemeContext';
 
 const ProgressBar = ({ progress = 0, color, style, height = 8 }) => {
   const theme = useTheme();
@@ -24,11 +25,11 @@ const ProgressBar = ({ progress = 0, color, style, height = 8 }) => {
           height,
           backgroundColor: theme.colors.disabled,
           borderRadius: height / 2,
-          overflow: "hidden",
-          width: "100%",
+          overflow: 'hidden',
+          width: '100%',
         },
         fill: {
-          height: "100%",
+          height: '100%',
           backgroundColor: color || theme.colors.primary,
           borderRadius: height / 2,
         },

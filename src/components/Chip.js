@@ -1,12 +1,13 @@
-import React, { useMemo } from "react";
-import { Pressable, Text, StyleSheet } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
+import React, { useMemo } from 'react';
+import { Pressable, Text, StyleSheet } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-} from "react-native-reanimated";
-import { Ionicons } from "@expo/vector-icons";
-import { useTheme } from "../context/ThemeContext";
+} from 'react-native-reanimated';
+
+import { useTheme } from '../context/ThemeContext';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -25,8 +26,8 @@ const Chip = ({
     () =>
       StyleSheet.create({
         container: {
-          flexDirection: "row",
-          alignItems: "center",
+          flexDirection: 'row',
+          alignItems: 'center',
           backgroundColor: selected
             ? theme.colors.primary
             : theme.colors.surface,
@@ -39,7 +40,7 @@ const Chip = ({
           marginBottom: theme.spacing.s,
         },
         text: {
-          color: selected ? "white" : theme.colors.text,
+          color: selected ? 'white' : theme.colors.text,
           fontSize: theme.typography.sizes.caption,
           marginRight: onDelete ? 4 : 0,
         },
@@ -74,7 +75,7 @@ const Chip = ({
           <Ionicons
             name="close-circle"
             size={16}
-            color={selected ? "white" : theme.colors.placeholder}
+            color={selected ? 'white' : theme.colors.placeholder}
           />
         </Pressable>
       )}
