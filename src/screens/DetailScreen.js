@@ -26,6 +26,13 @@ import SearchBar from "../components/SearchBar";
 import Segment from "../components/Segment";
 import Select from "../components/Select";
 import Toggle from "../components/Toggle";
+import Avatar from "../components/Avatar";
+import Badge from "../components/Badge";
+import Divider from "../components/Divider";
+import ListItem from "../components/ListItem";
+import FAB from "../components/FAB";
+import Skeleton from "../components/Skeleton";
+import EmptyState from "../components/EmptyState";
 
 import { Ionicons } from "@expo/vector-icons";
 
@@ -270,6 +277,139 @@ export default function DetailScreen({ route }) {
               onPress={handlePresentModalPress}
             />
           </View>
+        );
+      case "Avatar":
+        return (
+          <View
+            style={{ gap: spacing.m, flexDirection: "row", flexWrap: "wrap" }}
+          >
+            <Avatar initials="JD" size={40} />
+            <Avatar
+              initials="AE"
+              size={60}
+              backgroundColor={colors.secondary}
+            />
+            <Avatar
+              size={50}
+              source={{
+                uri: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+              }}
+            />
+          </View>
+        );
+      case "Badge":
+        return (
+          <View
+            style={{
+              gap: spacing.m,
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Badge content={5} />
+            <Badge content="New" color={colors.primary} size={24} />
+            <View>
+              <Ionicons name="notifications" size={32} color={colors.text} />
+              <Badge
+                content={3}
+                style={{ position: "absolute", top: -5, right: -5 }}
+              />
+            </View>
+          </View>
+        );
+      case "Divider":
+        return (
+          <View style={{ gap: spacing.m }}>
+            <Text style={{ color: colors.text }}>Horizontal</Text>
+            <Divider />
+            <Text style={{ color: colors.text }}>Horizontal Thick</Text>
+            <Divider width={4} color={colors.primary} />
+            <View
+              style={{ flexDirection: "row", height: 50, alignItems: "center" }}
+            >
+              <Text style={{ color: colors.text }}>Vertical</Text>
+              <Divider
+                orientation="vertical"
+                style={{ marginHorizontal: spacing.m }}
+              />
+              <Text style={{ color: colors.text }}>Divider</Text>
+            </View>
+          </View>
+        );
+      case "ListItem":
+        return (
+          <View>
+            <ListItem
+              title="List Item"
+              subtitle="With subtitle"
+              left={
+                <Ionicons
+                  name="person-circle"
+                  size={40}
+                  color={colors.primary}
+                />
+              }
+              divider
+              onPress={() => {}}
+            />
+            <ListItem
+              title="Another Item"
+              right={
+                <Ionicons name="star" size={24} color={colors.secondary} />
+              }
+              onPress={() => {}}
+            />
+          </View>
+        );
+      case "FAB":
+        return (
+          <View
+            style={{
+              height: 300,
+              backgroundColor: colors.surface,
+              position: "relative",
+            }}
+          >
+            <Text style={{ color: colors.text, padding: spacing.m }}>
+              FAB is positioned absolute relative to this container.
+            </Text>
+            <FAB onPress={() => Alert.alert("FAB Pressed")} />
+            <FAB
+              position="bottom-left"
+              color={colors.error}
+              icon="trash"
+              onPress={() => Alert.alert("Delete")}
+            />
+          </View>
+        );
+      case "Skeleton":
+        return (
+          <View style={{ gap: spacing.m }}>
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: spacing.s,
+              }}
+            >
+              <Skeleton variant="circle" width={50} height={50} />
+              <View style={{ gap: 8, flex: 1 }}>
+                <Skeleton height={20} width="80%" />
+                <Skeleton height={14} width="60%" />
+              </View>
+            </View>
+            <Skeleton height={150} radius={10} />
+          </View>
+        );
+      case "EmptyState":
+        return (
+          <EmptyState
+            title="No Messages"
+            description="You have not received any messages yet. Start a conversation!"
+            icon="chatbubbles-outline"
+            actionLabel="Start Chat"
+            onAction={() => {}}
+          />
         );
       default:
         return (

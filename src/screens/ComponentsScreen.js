@@ -9,12 +9,18 @@ import Header from "../components/Header";
 
 const COMPONENT_LIST = [
   { id: "Accordion", title: "Accordion" },
+  { id: "Avatar", title: "Avatar" },
+  { id: "Badge", title: "Badge" },
   { id: "Button", title: "Buttons" },
   { id: "Card", title: "Cards" },
   { id: "Checkbox", title: "Checkbox" },
   { id: "Chip", title: "Chips" },
   { id: "DateTime", title: "Date & Time" },
+  { id: "Divider", title: "Divider" },
+  { id: "EmptyState", title: "Empty State" },
+  { id: "FAB", title: "Floating Action Button (FAB)" },
   { id: "Input", title: "Inputs" },
+  { id: "ListItem", title: "List Item" },
   { id: "Loading", title: "Loading Indicator" },
   { id: "ProgressBar", title: "Progress Bar" },
   { id: "Radio", title: "Radio Button" },
@@ -22,6 +28,7 @@ const COMPONENT_LIST = [
   { id: "SearchBar", title: "Search Bar" },
   { id: "Segment", title: "Segmented Control" },
   { id: "Select", title: "Select / Picker" },
+  { id: "Skeleton", title: "Skeleton Loader" },
   { id: "Toggle", title: "Switch Toggle" },
   { id: "Interactions", title: "Interactions (Modal/Alert/Toast)" },
 ];

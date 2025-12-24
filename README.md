@@ -11,11 +11,25 @@ This template comes pre-configured with the latest **React Navigation v7**, **Re
 - **React Navigation v7**: The newest version of the navigation library.
 - **State Management**: **Zustand** for simple and scalable state management.
 - **Localization**: **i18next** & **react-i18next** pre-configured for multi-language support.
+- **UI System**: A comprehensive set of 23+ theme-aware components (Buttons, Inputs, Modals, etc.).
 - **Maps**: **react-native-maps** with **supercluster** and **react-native-map-clustering**.
 - **Storage**: **react-native-mmkv** for fastest mobile key-value storage.
-- **UI & Theme**: **react-native-svg** and a custom **ThemeContext** for dark/light mode handling.
 - **Animations**: **Reanimated 4** & **Gesture Handler**.
+- **Performance**: **FlashList** for high-performance lists.
 - **Utilities**: `expo-location`, `expo-notifications`, `axios`, and more.
+
+## 🎨 UI Component Library
+
+This template includes a robust library of custom UI components.
+Detailed usage instructions are available in [COMPONENTS.md](./COMPONENTS.md).
+
+Includes:
+
+- **Core**: Button, Input, Checkbox, Radio, Toggle, Chip, Segment
+- **Display**: Card, Avatar, Badge, Header, Divider, Loading, ProgressBar
+- **Feedback**: Alert, Toast, Modal, BottomSheet, EmptyState, Skeleton
+- **Data**: FlashList integration, Select, DateTime, Range, SearchBar
+- **Navigation**: FAB, ListItem
 
 ## 📋 Prerequisites
 
@@ -74,16 +88,16 @@ npx expo start
 
 ## 📦 Key Dependencies
 
-| Package                          | Version  | Description              |
-| :------------------------------- | :------- | :----------------------- |
-| `expo`                           | ~54.0.30 | Core Expo SDK            |
-| `react-native`                   | 0.81.5   | Mobile Framework         |
-| `@react-navigation/native`       | ^7.1.20  | Navigation (v7)          |
-| `zustand`                        | ^5.0.8   | State Management         |
-| `i18next`                        | ^25.6.3  | Internationalization     |
-| `react-native-mmkv`              | ^3.3.0   | High-performance Storage |
-| `react-native-maps`              | 1.20.1   | Map Integration          |
-| `react-native-reanimated`        | ~4.1.1   | Animations               |
+| Package                    | Version  | Description              |
+| :------------------------- | :------- | :----------------------- |
+| `expo`                     | ~54.0.30 | Core Expo SDK            |
+| `react-native`             | 0.81.5   | Mobile Framework         |
+| `@react-navigation/native` | ^7.1.20  | Navigation (v7)          |
+| `zustand`                  | ^5.0.8   | State Management         |
+| `i18next`                  | ^25.6.3  | Internationalization     |
+| `react-native-mmkv`        | ^3.3.0   | High-performance Storage |
+| `react-native-maps`        | 1.20.1   | Map Integration          |
+| `react-native-reanimated`  | ~4.1.1   | Animations               |
 
 ## 🤝 Contributing
 
