@@ -5,6 +5,8 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import Toast from "react-native-toast-message";
 import "./src/i18n"; // i18n yapılandırmasını yükle
 import { ThemeProvider } from "./src/context/ThemeContext";
 
@@ -58,12 +60,15 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <ThemeProvider>
         <SafeAreaProvider>
-          <StatusBar style="auto" />
-          <NavigationContainer>
-            <RootStack />
-          </NavigationContainer>
+          <BottomSheetModalProvider>
+            <StatusBar style="auto" />
+            <NavigationContainer>
+              <RootStack />
+            </NavigationContainer>
+          </BottomSheetModalProvider>
         </SafeAreaProvider>
       </ThemeProvider>
+      <Toast />
     </GestureHandlerRootView>
   );
 }
