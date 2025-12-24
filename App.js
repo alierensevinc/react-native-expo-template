@@ -7,7 +7,7 @@ import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import Toast from "react-native-toast-message";
-import "./src/i18n"; // i18n yapılandırmasını yükle
+import "./src/i18n";
 import { ThemeProvider } from "./src/context/ThemeContext";
 
 import HomeScreen from "./src/screens/HomeScreen";
@@ -32,13 +32,10 @@ export default function App() {
   useEffect(() => {
     async function prepare() {
       try {
-        // Burada API çağrıları, font yüklemeleri vb. yapılabilir
-        // Örnek bekleme süresi, gerçekte kaldırılabilir
         await new Promise((resolve) => setTimeout(resolve, 1000));
       } catch (e) {
         console.warn(e);
       } finally {
-        // Uygulama hazır
         setAppIsReady(true);
       }
     }

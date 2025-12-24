@@ -1,4 +1,4 @@
-const palette = {
+const lightPalette = {
   primary: "#6200EE",
   secondary: "#03DAC6",
   background: "#FFFFFF",
@@ -11,6 +11,21 @@ const palette = {
   placeholder: "rgba(0, 0, 0, 0.54)",
   backdrop: "rgba(0, 0, 0, 0.5)",
   notification: "#f50057",
+};
+
+const darkPalette = {
+  primary: "#BB86FC",
+  secondary: "#03DAC6",
+  background: "#121212",
+  surface: "#1E1E1E",
+  error: "#CF6679",
+  text: "#FFFFFF",
+  onBackground: "#FFFFFF",
+  onSurface: "#FFFFFF",
+  disabled: "rgba(255, 255, 255, 0.38)",
+  placeholder: "rgba(255, 255, 255, 0.54)",
+  backdrop: "rgba(0, 0, 0, 0.5)",
+  notification: "#ff80ab",
 };
 
 const spacing = {
@@ -37,14 +52,25 @@ const typeWeights = {
   bold: "bold",
 };
 
-const theme = {
-  colors: palette,
+export const lightTheme = {
+  colors: lightPalette,
   spacing,
   typography: {
     sizes: typeSizes,
     weights: typeWeights,
   },
-  // İleride dark mode için buraya logic eklenebilir
+  dark: false,
 };
 
-export default theme;
+export const darkTheme = {
+  colors: darkPalette,
+  spacing,
+  typography: {
+    sizes: typeSizes,
+    weights: typeWeights,
+  },
+  dark: true,
+};
+
+const defaultTheme = lightTheme;
+export default defaultTheme;

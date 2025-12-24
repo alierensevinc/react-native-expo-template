@@ -7,6 +7,7 @@ import {
   Modal,
   Pressable,
   StyleSheet,
+  Switch,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
@@ -28,7 +29,7 @@ import Loading from "../components/Loading";
 
 export default function HomeScreen() {
   const { t } = useTranslation();
-  const { colors, spacing, typography } = useTheme();
+  const { colors, spacing, typography, isDark, toggleTheme } = useTheme();
   const navigation = useNavigation();
 
   // Bottom Sheet Ref
@@ -91,15 +92,30 @@ export default function HomeScreen() {
             paddingBottom: 100, // Extra padding for bottom sheet
           }}
         >
-          <Text
+          <View
             style={{
-              color: colors.text,
-              fontSize: typography.sizes.headline,
-              fontWeight: typography.weights.bold,
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: spacing.m,
             }}
           >
-            {t("home.title")}
-          </Text>
+            <Text
+              style={{
+                color: colors.text,
+                fontSize: typography.sizes.headline,
+                fontWeight: typography.weights.bold,
+              }}
+            >
+              {t("home.title")}
+            </Text>
+            <Switch
+              value={isDark}
+              onValueChange={toggleTheme}
+              thumbColor={isDark ? colors.primary : "#f4f3f4"}
+              trackColor={{ false: "#767577", true: colors.secondary }}
+            />
+          </View>
 
           {/* ... existing card ... */}
           <Card onPress={() => navigation.navigate("Detail", { itemId: 42 })}>
