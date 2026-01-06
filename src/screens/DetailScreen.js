@@ -16,13 +16,17 @@ import Accordion from '../components/Accordion';
 import Avatar from '../components/Avatar';
 import Badge from '../components/Badge';
 import Button from '../components/Button';
-import Header from '../components/Header';
-
-// Components
 import Card from '../components/Card';
 import Checkbox from '../components/Checkbox';
 import Chip from '../components/Chip';
 import DateTime from '../components/DateTime';
+import Divider from '../components/Divider';
+import EmptyState from '../components/EmptyState';
+import FAB from '../components/FAB';
+import FormInput from '../components/FormInput';
+import Header from '../components/Header';
+
+// Components
 import Input from '../components/Input';
 import ListItem from '../components/ListItem';
 import Loading from '../components/Loading';
@@ -34,10 +38,6 @@ import Segment from '../components/Segment';
 import Select from '../components/Select';
 import Skeleton from '../components/Skeleton';
 import Toggle from '../components/Toggle';
-import Divider from '../components/Divider';
-import FAB from '../components/FAB';
-import EmptyState from '../components/EmptyState';
-import FormInput from '../components/FormInput';
 import { useTheme } from '../context/ThemeContext';
 
 export default function DetailScreen({ route }) {
@@ -83,18 +83,12 @@ export default function DetailScreen({ route }) {
     return (
       <View style={{ gap: spacing.m }}>
         <Text style={{ color: colors.text }}>Login Form Demo</Text>
-        <FormInput
-          name="email"
-          control={control}
-          label="Email"
-          placeholder="Enter email"
-        />
+        <FormInput name="email" control={control} label="Email" />
         <FormInput
           name="password"
           control={control}
           label="Password"
           secureTextEntry
-          placeholder="Enter password"
         />
         <Button title="Submit" onPress={handleSubmit(onSubmit)} />
       </View>

@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import React, { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 import { View, TextInput, Text, StyleSheet, Pressable } from 'react-native';
 import Animated, {
   useAnimatedStyle,
@@ -137,8 +137,6 @@ const Input = ({
           )}
           <TextInput
             style={styles.input}
-            placeholder={isFocused && !label ? props.placeholder : ''} // Only show placeholder if focused or no label
-            placeholderTextColor={theme.colors.placeholder}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             value={currentValue}
