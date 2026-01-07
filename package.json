@@ -28,6 +28,7 @@
     "android:build:preview": "NODE_ENV=development eas build --profile preview --platform android",
     "android:build:prod": "NODE_ENV=production eas build --profile production --platform android",
     "android:submit": "eas submit -p android --latest",
+    "cleanup": "node scripts/cleanup.js",
     "prepare": "husky"
   },
   "dependencies": {
