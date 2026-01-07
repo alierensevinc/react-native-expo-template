@@ -52,12 +52,24 @@ const typeWeights = {
   bold: 'bold',
 };
 
+const fonts = {
+  thin: 'Montserrat-Thin',
+  light: 'Montserrat-Light',
+  regular: 'Montserrat-Regular',
+  medium: 'Montserrat-Medium',
+  semiBold: 'Montserrat-SemiBold',
+  bold: 'Montserrat-Bold',
+  extraBold: 'Montserrat-ExtraBold',
+  black: 'Montserrat-Black',
+};
+
 export const lightTheme = {
   colors: lightPalette,
   spacing,
   typography: {
     sizes: typeSizes,
     weights: typeWeights,
+    fonts,
   },
   dark: false,
 };
@@ -68,6 +80,7 @@ export const darkTheme = {
   typography: {
     sizes: typeSizes,
     weights: typeWeights,
+    fonts,
   },
   dark: true,
 };
