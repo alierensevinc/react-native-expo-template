@@ -11,11 +11,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 
 import './src/i18n';
-import { QueryProvider } from './src/context/QueryProvider';
-import { ThemeProvider, useTheme } from './src/context/ThemeContext';
-import ComponentsScreen from './src/screens/ComponentsScreen';
-import DetailScreen from './src/screens/DetailScreen';
-import HomeScreen from './src/screens/HomeScreen';
+import { QueryProvider } from '@context/QueryProvider';
+import { ThemeProvider, useTheme } from '@context/ThemeContext';
+import HomeScreen from '@screens/HomeScreen';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,8 +28,6 @@ function RootStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Detail" component={DetailScreen} />
-      <Stack.Screen name="Components" component={ComponentsScreen} />
     </Stack.Navigator>
   );
 }

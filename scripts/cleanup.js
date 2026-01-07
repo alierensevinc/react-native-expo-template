@@ -41,3 +41,37 @@ export default function HomeScreen() {
 
 fs.writeFileSync(homeScreenPath, homeScreenContent);
 console.log('Modified: src/screens/HomeScreen.jsx');
+
+const appJsPath = path.join(projectRoot, 'App.js');
+let appJsContent = fs.readFileSync(appJsPath, 'utf8');
+
+// Remove unused imports
+appJsContent = appJsContent.replace(
+  /import ComponentsScreen from '.*';\n/g,
+  ''
+);
+appJsContent = appJsContent.replace(/import DetailScreen from '.*';\n/g, '');
+
+// Remove unused routes
+appJsContent = appJsContent.replace(
+  /\s*<Stack\.Screen name="Detail" component=\{DetailScreen\} \/>/g,
+  ''
+);
+appJsContent = appJsContent.replace(
+  /\s*<Stack\.Screen name="Components" component=\{ComponentsScreen\} \/>/g,
+  ''
+);
+
+// Update imports to use aliases
+appJsContent = appJsContent.replace(/from '\.\/src\/i18n'/g, "from '@i18n'");
+appJsContent = appJsContent.replace(
+  /from '\.\/src\/context\//g,
+  "from '@context/"
+);
+appJsContent = appJsContent.replace(
+  /from '\.\/src\/screens\//g,
+  "from '@screens/"
+);
+
+fs.writeFileSync(appJsPath, appJsContent);
+console.log('Modified: App.js');
