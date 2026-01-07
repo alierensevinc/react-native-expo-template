@@ -1,5 +1,5 @@
 import { Picker } from '@react-native-picker/picker';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { View, Text, StyleSheet, Platform } from 'react-native';
 
 import { useTheme } from '../context/ThemeContext';

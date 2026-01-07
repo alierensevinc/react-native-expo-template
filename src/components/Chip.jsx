@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Pressable, Text, StyleSheet } from 'react-native';
 import Animated, {
   useAnimatedStyle,

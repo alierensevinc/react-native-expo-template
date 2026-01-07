@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   View,
   Text,
@@ -20,7 +20,6 @@ import { useTheme } from '../context/ThemeContext';
 const Accordion = ({ title, children, style }) => {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
-  const heightValue = useSharedValue(0);
   const rotation = useSharedValue(0);
 
   // Basic estimated height for content or strict measurement if possible

@@ -11,38 +11,35 @@ import { View, Text, ScrollView, Alert, Modal, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 import { z } from 'zod';
-
-import Accordion from '../components/Accordion';
-import Avatar from '../components/Avatar';
-import Badge from '../components/Badge';
-import Button from '../components/Button';
-import Card from '../components/Card';
-import Checkbox from '../components/Checkbox';
-import Chip from '../components/Chip';
-import DateTime from '../components/DateTime';
-import Divider from '../components/Divider';
-import EmptyState from '../components/EmptyState';
-import FAB from '../components/FAB';
-import FormInput from '../components/FormInput';
-import Header from '../components/Header';
-
-// Components
-import Input from '../components/Input';
-import ListItem from '../components/ListItem';
-import Loading from '../components/Loading';
-import ProgressBar from '../components/ProgressBar';
-import Radio from '../components/Radio';
-import Range from '../components/Range';
-import SearchBar from '../components/SearchBar';
-import Segment from '../components/Segment';
-import Select from '../components/Select';
-import Skeleton from '../components/Skeleton';
-import Toggle from '../components/Toggle';
-import { useTheme } from '../context/ThemeContext';
+import Accordion from '@components/Accordion';
+import Avatar from '@components/Avatar';
+import Badge from '@components/Badge';
+import Button from '@components/Button';
+import Card from '@components/Card';
+import Checkbox from '@components/Checkbox';
+import Chip from '@components/Chip';
+import DateTime from '@components/DateTime';
+import Divider from '@components/Divider';
+import EmptyState from '@components/EmptyState';
+import FAB from '@components/FAB';
+import FormInput from '@components/FormInput';
+import Header from '@components/Header';
+import Input from '@components/Input';
+import ListItem from '@components/ListItem';
+import Loading from '@components/Loading';
+import ProgressBar from '@components/ProgressBar';
+import Radio from '@components/Radio';
+import Range from '@components/Range';
+import SearchBar from '@components/SearchBar';
+import Segment from '@components/Segment';
+import Select from '@components/Select';
+import Skeleton from '@components/Skeleton';
+import Toggle from '@components/Toggle';
+import { useTheme } from '@context/ThemeContext';
 
 export default function DetailScreen({ route }) {
   const { component, title } = route.params || {};
-  const { colors, spacing, typography } = useTheme();
+  const { colors, spacing } = useTheme();
 
   // State mgmt for various demos
   const [checkboxValue, setCheckboxValue] = useState(false);

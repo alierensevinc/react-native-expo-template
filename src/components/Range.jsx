@@ -1,5 +1,5 @@
 import Slider from '@react-native-community/slider';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import { useTheme } from '../context/ThemeContext';

@@ -60,7 +60,7 @@ export default function HomeScreen() {
               textAlign: 'center',
             }}
           >
-            View All Components
+            {t('welcome')}
           </Text>
           <Text
             style={{

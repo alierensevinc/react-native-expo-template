@@ -171,7 +171,32 @@ import Input from '../components/Input';
 - `leftIcon`, `rightIcon` (node, optional): Icons inside input.
 - Standard `TextInput` props (`placeholder`, `keyboardType`, etc.).
 
-### 9. Loading
+### 9. FormInput
+
+Wrapper around `Input` integrated with `react-hook-form`.
+
+```javascript
+import FormInput from '../components/FormInput';
+import { useForm } from 'react-hook-form';
+
+const { control } = useForm();
+
+<FormInput
+  control={control}
+  name="email"
+  label="Email"
+  rules={{ required: 'Email is required' }}
+/>;
+```
+
+**Props:**
+
+- `control` (object): `react-hook-form` control object.
+- `name` (string): Field name.
+- `rules` (object): Validation rules.
+- Inherits all `Input` props.
+
+### 10. Loading
 
 Activity indicator.
 
@@ -186,7 +211,7 @@ import Loading from '../components/Loading';
 - `size` ('small' | 'large'): Spinner size.
 - `color` (string, optional): Custom color override.
 
-### 10. ProgressBar
+### 11. ProgressBar
 
 Linear progress indicator.
 
@@ -200,7 +225,7 @@ import ProgressBar from '../components/ProgressBar';
 
 - `progress` (number): Value between 0.0 and 1.0.
 
-### 11. Radio
+### 12. Radio
 
 Single selection indicator.
 
@@ -220,7 +245,7 @@ import Radio from '../components/Radio';
 - `selected` (bool): Active state.
 - `onChange` (fn): Selection handler.
 
-### 12. Range
+### 13. Range
 
 Slider control.
 
@@ -238,7 +263,7 @@ import Range from '../components/Range';
 
 **Aliases `@react-native-community/slider` props.**
 
-### 13. SearchBar
+### 14. SearchBar
 
 Specialized input for search.
 
@@ -256,7 +281,7 @@ import SearchBar from '../components/SearchBar';
 
 - `onClear` (fn): Action when 'x' is pressed.
 
-### 14. Segment
+### 15. Segment
 
 Tab-like control for mode switching.
 
@@ -276,7 +301,7 @@ import Segment from '../components/Segment';
 - `selectedIndex` (number): Active index.
 - `onChange` (fn): Receives new index.
 
-### 15. Select
+### 16. Select
 
 Dropdown picker wrapper.
 
@@ -300,7 +325,7 @@ import Select from '../components/Select';
 - `label` (string, optional): Label for the field.
 - Wraps `@react-native-picker/picker`.
 
-### 16. Toggle
+### 17. Toggle
 
 Switch control.
 
@@ -315,7 +340,7 @@ import Toggle from '../components/Toggle';
 - `value` (bool): On/off state.
 - `onValueChange` (fn): Toggle handler.
 
-### 17. Avatar
+### 18. Avatar
 
 Circular image or initials display.
 
@@ -333,7 +358,7 @@ import Avatar from '../components/Avatar';
 - `size` (number): Diameter.
 - `backgroundColor` (string): Circle color.
 
-### 18. Badge
+### 19. Badge
 
 Notification indicator.
 
@@ -349,7 +374,7 @@ import Badge from '../components/Badge';
 - `size` (number): Diameter/Height.
 - `color` (string): Background color.
 
-### 19. Divider
+### 20. Divider
 
 Visual separator.
 
@@ -364,7 +389,7 @@ import Divider from '../components/Divider';
 - `orientation` ('horizontal' | 'vertical').
 - `width` (number): Thickness.
 
-### 20. ListItem
+### 21. ListItem
 
 Standard list row.
 
@@ -385,7 +410,7 @@ import ListItem from '../components/ListItem';
 - `left`, `right` (node): Icons/Avatars.
 - `divider` (bool): Shows bottom border.
 
-### 21. FAB
+### 22. FAB
 
 Floating Action Button.
 
@@ -400,7 +425,7 @@ import FAB from '../components/FAB';
 - `icon` (string): Ionicons name.
 - `position` ('bottom-right' | 'bottom-left' | 'center').
 
-### 22. Skeleton
+### 23. Skeleton
 
 Loading placeholder animation.
 
@@ -416,7 +441,7 @@ import Skeleton from '../components/Skeleton';
 - `variant` ('rect' | 'circle').
 - `width`, `height`.
 
-### 23. EmptyState
+### 24. EmptyState
 
 Placeholder for empty content.
 

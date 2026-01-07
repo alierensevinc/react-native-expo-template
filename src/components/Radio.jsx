@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { Pressable, View, Text, StyleSheet } from 'react-native';
+import { useMemo } from 'react';
+import { Pressable, Text, StyleSheet } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   withSpring,
