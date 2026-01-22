@@ -14,6 +14,8 @@ import './src/i18n';
 import { QueryProvider } from '@context/QueryProvider';
 import { ThemeProvider, useTheme } from '@context/ThemeContext';
 import HomeScreen from '@screens/HomeScreen';
+import DetailScreen from '@screens/DetailScreen';
+import ComponentsScreen from '@screens/ComponentsScreen';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,6 +30,8 @@ function RootStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Detail" component={DetailScreen} />
+      <Stack.Screen name="Components" component={ComponentsScreen} />
     </Stack.Navigator>
   );
 }
