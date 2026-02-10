@@ -1,10 +1,10 @@
 const lightPalette = {
-  primary: '#3b5998', // Palet: En koyu mavi
-  secondary: '#8b9dc3', // Palet: Orta mavi
-  background: '#f7f7f7', // Palet: Kırık beyaz
-  surface: '#ffffff', // Palet: Tam beyaz
-  error: '#B00020', // (Paletinizde kırmızı yok, standart hata rengi korundu)
-  text: '#000000', // Okunabilirlik için siyah
+  primary: '#3b5998',
+  secondary: '#8b9dc3',
+  background: '#f7f7f7',
+  surface: '#ffffff',
+  error: '#B00020',
+  text: '#000000',
   onBackground: '#000000',
   onSurface: '#000000',
   disabled: 'rgba(0, 0, 0, 0.38)',
@@ -14,12 +14,12 @@ const lightPalette = {
 };
 
 const darkPalette = {
-  primary: '#8b9dc3', // Palet: Orta mavi (Siyah zemin üstünde parlar)
-  secondary: '#dfe3ee', // Palet: En açık mavi (Vurgular için)
-  background: '#121212', // Standart Dark Mode arka planı (Göz yormaması için)
-  surface: '#1E1E1E', // Standart Dark Mode kart rengi
-  error: '#CF6679', // Standart Dark Mode hata rengi
-  text: '#ffffff', // Palet: Tam beyaz
+  primary: '#8b9dc3',
+  secondary: '#dfe3ee',
+  background: '#121212',
+  surface: '#1E1E1E',
+  error: '#CF6679',
+  text: '#ffffff',
   onBackground: '#ffffff',
   onSurface: '#ffffff',
   disabled: 'rgba(255, 255, 255, 0.38)',

@@ -5,7 +5,6 @@ import { initReactI18next } from 'react-i18next';
 import en from './locales/en.json';
 import tr from './locales/tr.json';
 
-// Dil kaynaklarını tanımla
 const resources = {
   en: {
     translation: en,
@@ -15,9 +14,7 @@ const resources = {
   },
 };
 
-// Cihazın dilini al
 const getDeviceLanguage = () => {
-  // Expo Localization API'si biraz değişti, güvenli bir şekilde ilk dili alalım
   const locales = Localization.getLocales();
   if (locales && locales.length > 0) {
     return locales[0].languageCode;
@@ -27,12 +24,12 @@ const getDeviceLanguage = () => {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: getDeviceLanguage(), // Cihaz dilini varsayılan olarak ayarla
-  fallbackLng: 'en', // Dil bulunamazsa İngilizceye dön
+  lng: getDeviceLanguage(),
+  fallbackLng: 'en',
   interpolation: {
-    escapeValue: false, // React zaten XSS koruması sağlıyor
+    escapeValue: false,
   },
-  compatibilityJSON: 'v3', // Android için gerekli
+  compatibilityJSON: 'v3',
 });
 
 export default i18n;

@@ -30,10 +30,6 @@ export const ThemeProvider = ({ children }) => {
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };
-// Correction: I should import lightTheme and darkTheme named exports or just use the logic I defined in index.js
-// Let's re-verify the export from index.js.
-// I exported lightTheme and darkTheme as named exports, and defaultTheme as lightTheme.
-// I will fix imports in next line.
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
