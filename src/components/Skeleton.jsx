@@ -7,10 +7,10 @@ import Animated, {
   withSequence,
 } from 'react-native-reanimated';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const Skeleton = ({ width, height, radius, style, variant = 'rect' }) => {
-  const theme = useTheme();
+  const { colors } = useTheme();
   const opacity = useSharedValue(0.3);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Skeleton = ({ width, height, radius, style, variant = 'rect' }) => {
   const baseStyle = {
     width: width || '100%',
     height: height || 20,
-    backgroundColor: theme.colors.disabled,
+    backgroundColor: colors.disabled,
     borderRadius: variant === 'circle' ? (width || height) / 2 : radius || 4,
   };
 

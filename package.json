@@ -4,8 +4,11 @@
   "main": "index.js",
   "scripts": {
     "start": "expo start",
+    "start:nodev": "expo start --no-dev",
     "start:clean": "expo start --clear",
     "web": "expo start --web",
+    "start:atlas": "EXPO_ATLAS=true expo start",
+    "export:atlas": "EXPO_ATLAS=true expo export",
     "ios:prebuild": "expo prebuild --platform ios",
     "ios:prebuild:clean": "expo prebuild --platform ios --clean",
     "ios:run": "expo run:ios",

@@ -5,8 +5,8 @@ import React, { useCallback } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import Header from '../components/Header';
-import { useTheme } from '../context/ThemeContext';
+import Header from '@components/Header';
+import { useTheme } from '@context/ThemeContext';
 
 const COMPONENT_LIST = [
   { id: 'Accordion', title: 'Accordion' },

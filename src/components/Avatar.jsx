@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const Avatar = ({
   source,
@@ -11,7 +11,7 @@ const Avatar = ({
   style,
   backgroundColor,
 }) => {
-  const theme = useTheme();
+  const { colors, typography } = useTheme();
 
   const styles = useMemo(
     () =>
@@ -20,7 +20,7 @@ const Avatar = ({
           width: size,
           height: size,
           borderRadius: size / 2,
-          backgroundColor: backgroundColor || theme.colors.primary,
+          backgroundColor: backgroundColor || colors.primary,
           justifyContent: 'center',
           alignItems: 'center',
           overflow: 'hidden',
@@ -32,10 +32,10 @@ const Avatar = ({
         text: {
           color: '#FFFFFF',
           fontSize: size * 0.4,
-          fontWeight: theme.typography.weights.medium,
+          fontWeight: typography.weights.medium,
         },
       }),
-    [theme, size, backgroundColor]
+    [colors, typography, size, backgroundColor]
   );
 
   const content = (

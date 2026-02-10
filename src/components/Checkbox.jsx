@@ -10,10 +10,10 @@ import Animated, {
   ZoomOut,
 } from 'react-native-reanimated';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const Checkbox = ({ checked, onChange, label, style }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography } = useTheme();
 
   // Derived value: 0 -> unchecked, 1 -> checked
   const progress = useDerivedValue(() => {
@@ -26,7 +26,7 @@ const Checkbox = ({ checked, onChange, label, style }) => {
         container: {
           flexDirection: 'row',
           alignItems: 'center',
-          marginVertical: theme.spacing.xs,
+          marginVertical: spacing.xs,
         },
         box: {
           width: 24,
@@ -35,27 +35,27 @@ const Checkbox = ({ checked, onChange, label, style }) => {
           borderWidth: 2,
           justifyContent: 'center',
           alignItems: 'center',
-          marginRight: theme.spacing.s,
+          marginRight: spacing.s,
         },
         label: {
-          color: theme.colors.text,
-          fontSize: theme.typography.sizes.body,
+          color: colors.text,
+          fontSize: typography.sizes.body,
         },
       }),
-    [theme]
+    [colors, spacing, typography]
   );
 
   const animatedBoxStyle = useAnimatedStyle(() => {
     const backgroundColor = interpolateColor(
       progress.value,
       [0, 1],
-      ['transparent', theme.colors.primary]
+      ['transparent', colors.primary]
     );
 
     const borderColor = interpolateColor(
       progress.value,
       [0, 1],
-      [theme.colors.disabled, theme.colors.primary]
+      [colors.disabled, colors.primary]
     );
 
     return {

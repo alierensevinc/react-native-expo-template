@@ -10,13 +10,13 @@ import Animated, {
   cancelAnimation,
 } from 'react-native-reanimated';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const Loading = ({ size = 'large', color }) => {
-  const theme = useTheme();
+  const { colors } = useTheme();
   const rotation = useSharedValue(0);
 
-  const spinnerColor = color || theme.colors.primary;
+  const spinnerColor = color || colors.primary;
   const iconSize = size === 'small' ? 24 : size === 'large' ? 48 : 32;
 
   useEffect(() => {

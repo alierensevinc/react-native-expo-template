@@ -6,10 +6,10 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const Radio = ({ selected, onChange, label, style }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography } = useTheme();
 
   const styles = useMemo(
     () =>
@@ -17,7 +17,7 @@ const Radio = ({ selected, onChange, label, style }) => {
         container: {
           flexDirection: 'row',
           alignItems: 'center',
-          marginVertical: theme.spacing.xs,
+          marginVertical: spacing.xs,
         },
         outerCircle: {
           width: 24,
@@ -26,28 +26,27 @@ const Radio = ({ selected, onChange, label, style }) => {
           borderWidth: 2,
           justifyContent: 'center',
           alignItems: 'center',
-          marginRight: theme.spacing.s,
+          marginRight: spacing.s,
         },
         innerCircle: {
           width: 12,
           height: 12,
           borderRadius: 6,
-          backgroundColor: theme.colors.primary,
+          backgroundColor: colors.primary,
         },
         label: {
-          color: theme.colors.text,
-          fontSize: theme.typography.sizes.body,
+          color: colors.text,
+          fontSize: typography.sizes.body,
         },
       }),
-    [theme]
+    [colors, spacing, typography]
   );
 
   const outerStyle = useAnimatedStyle(() => {
     return {
-      borderColor: withTiming(
-        selected ? theme.colors.primary : theme.colors.disabled,
-        { duration: 200 }
-      ),
+      borderColor: withTiming(selected ? colors.primary : colors.disabled, {
+        duration: 200,
+      }),
     };
   });
 

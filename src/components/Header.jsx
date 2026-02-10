@@ -3,10 +3,10 @@ import { useNavigation } from '@react-navigation/native';
 import { useMemo } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const Header = ({ title, showBack = false, rightComponent }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography } = useTheme();
   const navigation = useNavigation();
 
   const styles = useMemo(
@@ -16,17 +16,17 @@ const Header = ({ title, showBack = false, rightComponent }) => {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
-          paddingHorizontal: theme.spacing.m,
-          paddingVertical: theme.spacing.m,
-          backgroundColor: theme.colors.background,
+          paddingHorizontal: spacing.m,
+          paddingVertical: spacing.m,
+          backgroundColor: colors.background,
         },
         leftContainer: {
           width: 40,
         },
         title: {
-          color: theme.colors.text,
-          fontSize: theme.typography.sizes.title,
-          fontWeight: theme.typography.weights.bold,
+          color: colors.text,
+          fontSize: typography.sizes.title,
+          fontWeight: typography.weights.bold,
           textAlign: 'center',
           flex: 1,
         },
@@ -35,7 +35,7 @@ const Header = ({ title, showBack = false, rightComponent }) => {
           alignItems: 'flex-end',
         },
       }),
-    [theme]
+    [colors, spacing, typography]
   );
 
   return (
@@ -43,7 +43,7 @@ const Header = ({ title, showBack = false, rightComponent }) => {
       <View style={styles.leftContainer}>
         {showBack && (
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons name="arrow-back" size={24} color={theme.colors.text} />
+            <Ionicons name="arrow-back" size={24} color={colors.text} />
           </TouchableOpacity>
         )}
       </View>

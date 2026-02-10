@@ -6,21 +6,21 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 const Card = ({ children, style, onPress, ...props }) => {
-  const theme = useTheme();
+  const { colors, spacing } = useTheme();
   const scale = useSharedValue(1);
 
   const containerStyle = useMemo(() => {
     return [
       {
-        backgroundColor: theme.colors.surface,
-        borderRadius: theme.spacing.m,
-        padding: theme.spacing.m,
-        shadowColor: theme.colors.text,
+        backgroundColor: colors.surface,
+        borderRadius: spacing.m,
+        padding: spacing.m,
+        shadowColor: colors.text,
         shadowOffset: {
           width: 0,
           height: 2,
@@ -31,7 +31,7 @@ const Card = ({ children, style, onPress, ...props }) => {
       },
       style,
     ];
-  }, [theme, style]);
+  }, [colors, spacing, style]);
 
   const animatedStyle = useAnimatedStyle(() => {
     return {

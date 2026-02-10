@@ -6,10 +6,10 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const ProgressBar = ({ progress = 0, color, style, height = 8 }) => {
-  const theme = useTheme();
+  const { colors } = useTheme();
   const width = useSharedValue(0);
 
   useEffect(() => {
@@ -23,18 +23,18 @@ const ProgressBar = ({ progress = 0, color, style, height = 8 }) => {
       StyleSheet.create({
         container: {
           height,
-          backgroundColor: theme.colors.disabled,
+          backgroundColor: colors.disabled,
           borderRadius: height / 2,
           overflow: 'hidden',
           width: '100%',
         },
         fill: {
           height: '100%',
-          backgroundColor: color || theme.colors.primary,
+          backgroundColor: color || colors.primary,
           borderRadius: height / 2,
         },
       }),
-    [theme, height, color]
+    [colors, height, color]
   );
 
   const animatedStyle = useAnimatedStyle(() => {

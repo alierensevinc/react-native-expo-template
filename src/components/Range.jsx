@@ -2,7 +2,7 @@ import Slider from '@react-native-community/slider';
 import { useMemo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const Range = ({
   min = 0,
@@ -13,30 +13,30 @@ const Range = ({
   label,
   style,
 }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography } = useTheme();
 
   const styles = useMemo(
     () =>
       StyleSheet.create({
         container: {
-          marginVertical: theme.spacing.s,
+          marginVertical: spacing.s,
         },
         labelContainer: {
           flexDirection: 'row',
           justifyContent: 'space-between',
-          marginBottom: theme.spacing.xs,
+          marginBottom: spacing.xs,
         },
         label: {
-          color: theme.colors.text,
-          fontSize: theme.typography.sizes.caption,
+          color: colors.text,
+          fontSize: typography.sizes.caption,
         },
         value: {
-          color: theme.colors.primary,
-          fontSize: theme.typography.sizes.caption,
+          color: colors.primary,
+          fontSize: typography.sizes.caption,
           fontWeight: 'bold',
         },
       }),
-    [theme]
+    [colors, spacing, typography]
   );
 
   return (
@@ -54,9 +54,9 @@ const Range = ({
         step={step}
         value={value}
         onValueChange={onValueChange}
-        minimumTrackTintColor={theme.colors.primary}
-        maximumTrackTintColor={theme.colors.disabled}
-        thumbTintColor={theme.colors.primary}
+        minimumTrackTintColor={colors.primary}
+        maximumTrackTintColor={colors.disabled}
+        thumbTintColor={colors.primary}
       />
     </View>
   );

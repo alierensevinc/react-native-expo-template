@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import Button from './Button';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const EmptyState = ({
   icon,
@@ -13,7 +13,7 @@ const EmptyState = ({
   onAction,
   style,
 }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography } = useTheme();
 
   const styles = useMemo(
     () =>
@@ -21,24 +21,24 @@ const EmptyState = ({
         container: {
           alignItems: 'center',
           justifyContent: 'center',
-          padding: theme.spacing.xl,
+          padding: spacing.xl,
         },
         title: {
-          color: theme.colors.text,
-          fontSize: theme.typography.sizes.title,
-          fontWeight: theme.typography.weights.bold,
-          marginTop: theme.spacing.m,
+          color: colors.text,
+          fontSize: typography.sizes.title,
+          fontWeight: typography.weights.bold,
+          marginTop: spacing.m,
           textAlign: 'center',
         },
         description: {
-          color: theme.colors.placeholder,
-          fontSize: theme.typography.sizes.body,
-          marginTop: theme.spacing.s,
-          marginBottom: theme.spacing.l,
+          color: colors.placeholder,
+          fontSize: typography.sizes.body,
+          marginTop: spacing.s,
+          marginBottom: spacing.l,
           textAlign: 'center',
         },
       }),
-    [theme]
+    [colors, spacing, typography]
   );
 
   return (
@@ -46,7 +46,7 @@ const EmptyState = ({
       <Ionicons
         name={icon || 'file-tray-outline'}
         size={64}
-        color={theme.colors.disabled}
+        color={colors.disabled}
       />
       {title && <Text style={styles.title}>{title}</Text>}
       {description && <Text style={styles.description}>{description}</Text>}

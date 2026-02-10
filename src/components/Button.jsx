@@ -6,7 +6,7 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -19,32 +19,32 @@ const Button = ({
   style,
   textStyle,
 }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography } = useTheme();
   const scale = useSharedValue(1);
 
   const getBackgroundColor = () => {
-    if (disabled) return theme.colors.disabled;
+    if (disabled) return colors.disabled;
     switch (variant) {
       case 'primary':
-        return theme.colors.primary;
+        return colors.primary;
       case 'secondary':
-        return theme.colors.secondary;
+        return colors.secondary;
       case 'outline':
         return 'transparent';
       default:
-        return theme.colors.primary;
+        return colors.primary;
     }
   };
 
   const getTextColor = () => {
-    if (disabled) return theme.colors.placeholder;
+    if (disabled) return colors.placeholder;
     switch (variant) {
       case 'primary':
         return '#FFFFFF';
       case 'secondary':
         return '#000000';
       case 'outline':
-        return theme.colors.primary;
+        return colors.primary;
       default:
         return '#FFFFFF';
     }
@@ -54,24 +54,23 @@ const Button = ({
     () =>
       StyleSheet.create({
         container: {
-          paddingVertical: theme.spacing.m,
-          paddingHorizontal: theme.spacing.l,
-          borderRadius: theme.spacing.s,
+          paddingVertical: spacing.m,
+          paddingHorizontal: spacing.l,
+          borderRadius: spacing.s,
           alignItems: 'center',
           justifyContent: 'center',
           borderWidth: variant === 'outline' ? 1 : 0,
-          borderColor:
-            variant === 'outline' ? theme.colors.primary : 'transparent',
+          borderColor: variant === 'outline' ? colors.primary : 'transparent',
           backgroundColor: getBackgroundColor(),
           flexDirection: 'row',
         },
         text: {
           color: getTextColor(),
-          fontSize: theme.typography.sizes.button,
-          fontWeight: theme.typography.weights.medium,
+          fontSize: typography.sizes.button,
+          fontWeight: typography.weights.medium,
         },
       }),
-    [theme, variant, disabled]
+    [colors, spacing, typography, variant, disabled]
   );
 
   const animatedStyle = useAnimatedStyle(() => {

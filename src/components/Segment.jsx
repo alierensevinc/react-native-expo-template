@@ -5,10 +5,10 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const Segment = ({ options, selectedIndex, onChange, style }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography } = useTheme();
   const [containerWidth, setContainerWidth] = useState(0);
 
   const segmentWidth = containerWidth
@@ -20,11 +20,11 @@ const Segment = ({ options, selectedIndex, onChange, style }) => {
       StyleSheet.create({
         container: {
           flexDirection: 'row',
-          backgroundColor: theme.colors.surface,
-          borderRadius: theme.spacing.s,
+          backgroundColor: colors.surface,
+          borderRadius: spacing.s,
           padding: 2,
           borderWidth: 1,
-          borderColor: theme.colors.disabled,
+          borderColor: colors.disabled,
           height: 40,
         },
         slider: {
@@ -32,26 +32,26 @@ const Segment = ({ options, selectedIndex, onChange, style }) => {
           top: 2,
           bottom: 2,
           left: 2,
-          backgroundColor: theme.colors.primary,
-          borderRadius: theme.spacing.s - 2,
+          backgroundColor: colors.primary,
+          borderRadius: spacing.s - 2,
         },
         item: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
-          borderRadius: theme.spacing.s - 2,
+          borderRadius: spacing.s - 2,
           zIndex: 1,
         },
         text: {
-          fontSize: theme.typography.sizes.caption,
-          fontWeight: theme.typography.weights.medium,
-          color: theme.colors.text,
+          fontSize: typography.sizes.caption,
+          fontWeight: typography.weights.medium,
+          color: colors.text,
         },
         selectedText: {
           color: 'white',
         },
       }),
-    [theme]
+    [colors, spacing, typography]
   );
 
   const sliderStyle = useAnimatedStyle(() => {

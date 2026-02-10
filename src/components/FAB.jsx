@@ -2,10 +2,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { useMemo } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const FAB = ({ icon, onPress, color, style, position = 'bottom-right' }) => {
-  const theme = useTheme();
+  const { colors, spacing } = useTheme();
 
   const styles = useMemo(
     () =>
@@ -15,7 +15,7 @@ const FAB = ({ icon, onPress, color, style, position = 'bottom-right' }) => {
           width: 56,
           height: 56,
           borderRadius: 28,
-          backgroundColor: color || theme.colors.secondary,
+          backgroundColor: color || colors.secondary,
           justifyContent: 'center',
           alignItems: 'center',
           shadowColor: '#000',
@@ -24,20 +24,20 @@ const FAB = ({ icon, onPress, color, style, position = 'bottom-right' }) => {
           shadowRadius: 4,
           elevation: 6,
           ...(position === 'bottom-right' && {
-            bottom: theme.spacing.l,
-            right: theme.spacing.l,
+            bottom: spacing.l,
+            right: spacing.l,
           }),
           ...(position === 'bottom-left' && {
-            bottom: theme.spacing.l,
-            left: theme.spacing.l,
+            bottom: spacing.l,
+            left: spacing.l,
           }),
           ...(position === 'center' && {
             alignSelf: 'center',
-            bottom: theme.spacing.l,
+            bottom: spacing.l,
           }),
         },
       }),
-    [theme, color, position]
+    [colors, spacing, color, position]
   );
 
   return (

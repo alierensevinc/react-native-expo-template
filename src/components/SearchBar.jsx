@@ -2,10 +2,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { useMemo } from 'react';
 import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const SearchBar = ({ value, onChangeText, placeholder, onClear, style }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography } = useTheme();
 
   const styles = useMemo(
     () =>
@@ -13,40 +13,36 @@ const SearchBar = ({ value, onChangeText, placeholder, onClear, style }) => {
         container: {
           flexDirection: 'row',
           alignItems: 'center',
-          backgroundColor: theme.colors.surface,
-          borderRadius: theme.spacing.s,
-          paddingHorizontal: theme.spacing.s,
+          backgroundColor: colors.surface,
+          borderRadius: spacing.s,
+          paddingHorizontal: spacing.s,
           height: 48,
           borderWidth: 1,
-          borderColor: theme.colors.disabled,
+          borderColor: colors.disabled,
         },
         input: {
           flex: 1,
-          marginLeft: theme.spacing.s,
-          color: theme.colors.text,
-          fontSize: theme.typography.sizes.body,
+          marginLeft: spacing.s,
+          color: colors.text,
+          fontSize: typography.sizes.body,
         },
       }),
-    [theme]
+    [colors, spacing, typography]
   );
 
   return (
     <View style={[styles.container, style]}>
-      <Ionicons name="search" size={20} color={theme.colors.placeholder} />
+      <Ionicons name="search" size={20} color={colors.placeholder} />
       <TextInput
         style={styles.input}
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder || 'Search...'}
-        placeholderTextColor={theme.colors.placeholder}
+        placeholderTextColor={colors.placeholder}
       />
       {value?.length > 0 && (
         <TouchableOpacity onPress={onClear}>
-          <Ionicons
-            name="close-circle"
-            size={20}
-            color={theme.colors.placeholder}
-          />
+          <Ionicons name="close-circle" size={20} color={colors.placeholder} />
         </TouchableOpacity>
       )}
     </View>

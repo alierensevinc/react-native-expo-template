@@ -2,7 +2,7 @@ import { Picker } from '@react-native-picker/picker';
 import { useMemo } from 'react';
 import { View, Text, StyleSheet, Platform } from 'react-native';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const Select = ({
   selectedValue,
@@ -12,24 +12,24 @@ const Select = ({
   style,
   enabled = true,
 }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography } = useTheme();
 
   const styles = useMemo(
     () =>
       StyleSheet.create({
         container: {
-          marginVertical: theme.spacing.s,
+          marginVertical: spacing.s,
         },
         label: {
-          color: theme.colors.text,
-          fontSize: theme.typography.sizes.caption,
-          marginBottom: theme.spacing.xs,
+          color: colors.text,
+          fontSize: typography.sizes.caption,
+          marginBottom: spacing.xs,
         },
         pickerContainer: {
-          backgroundColor: theme.colors.surface,
-          borderRadius: theme.spacing.s,
+          backgroundColor: colors.surface,
+          borderRadius: spacing.s,
           borderWidth: 1,
-          borderColor: theme.colors.disabled,
+          borderColor: colors.disabled,
           overflow: 'hidden',
           justifyContent: 'center', // Important for centering picker content
           ...Platform.select({
@@ -53,7 +53,7 @@ const Select = ({
           }),
         },
       }),
-    [theme]
+    [colors, spacing, typography]
   );
 
   return (
@@ -65,15 +65,15 @@ const Select = ({
           onValueChange={onValueChange}
           enabled={enabled}
           style={styles.picker}
-          dropdownIconColor={theme.colors.text}
-          itemStyle={{ color: theme.colors.text, fontSize: 16, height: 120 }} // iOS item style
+          dropdownIconColor={colors.text}
+          itemStyle={{ color: colors.text, fontSize: 16, height: 120 }} // iOS item style
         >
           {items.map((item) => (
             <Picker.Item
               key={item.value}
               label={item.label}
               value={item.value}
-              color={theme.colors.text}
+              color={colors.text}
             />
           ))}
         </Picker>

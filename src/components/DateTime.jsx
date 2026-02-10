@@ -3,7 +3,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState, useMemo } from 'react';
 import { View, Text, Pressable, Platform, StyleSheet } from 'react-native';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const DateTime = ({
   value = new Date(),
@@ -12,43 +12,43 @@ const DateTime = ({
   label,
   style,
 }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography, dark } = useTheme();
   const [show, setShow] = useState(false);
 
   const styles = useMemo(
     () =>
       StyleSheet.create({
         container: {
-          marginVertical: theme.spacing.s,
+          marginVertical: spacing.s,
         },
         label: {
-          color: theme.colors.text,
-          fontSize: theme.typography.sizes.caption,
-          marginBottom: theme.spacing.xs,
+          color: colors.text,
+          fontSize: typography.sizes.caption,
+          marginBottom: spacing.xs,
         },
         button: {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
-          backgroundColor: theme.colors.surface,
-          borderRadius: theme.spacing.s,
+          backgroundColor: colors.surface,
+          borderRadius: spacing.s,
           borderWidth: 1,
-          borderColor: theme.colors.disabled,
-          padding: theme.spacing.s,
+          borderColor: colors.disabled,
+          padding: spacing.s,
           height: 48,
         },
         text: {
-          color: theme.colors.text,
-          fontSize: theme.typography.sizes.body,
+          color: colors.text,
+          fontSize: typography.sizes.body,
         },
         pickerContainer: {
-          backgroundColor: theme.colors.surface,
+          backgroundColor: colors.surface,
           marginTop: 8,
           borderRadius: 8,
           overflow: 'hidden', // Contain the picker
         },
       }),
-    [theme]
+    [colors, spacing, typography]
   );
 
   const handlePress = () => {
@@ -89,7 +89,7 @@ const DateTime = ({
               <Ionicons
                 name={show ? 'chevron-up' : 'calendar-outline'}
                 size={20}
-                color={theme.colors.primary}
+                color={colors.primary}
               />
             </Pressable>
           </View>
@@ -102,9 +102,9 @@ const DateTime = ({
                 is24Hour
                 display="spinner" // 'spinner' is safer/more constrained than 'inline' sometimes on older iOS or specific layouts
                 onChange={handleChange}
-                themeVariant={theme.dark ? 'dark' : 'light'}
-                textColor={theme.colors.text} // Explicit text color if supported
-                style={{ backgroundColor: theme.colors.surface, height: 120 }}
+                themeVariant={dark ? 'dark' : 'light'}
+                textColor={colors.text} // Explicit text color if supported
+                style={{ backgroundColor: colors.surface, height: 120 }}
               />
             </View>
           )}
@@ -116,7 +116,7 @@ const DateTime = ({
             <Ionicons
               name="calendar-outline"
               size={20}
-              color={theme.colors.primary}
+              color={colors.primary}
             />
           </Pressable>
           {show && (

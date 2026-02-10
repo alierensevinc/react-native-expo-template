@@ -7,10 +7,10 @@ import Animated, {
   useDerivedValue,
 } from 'react-native-reanimated';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const Toggle = ({ value, onValueChange, style }) => {
-  const theme = useTheme();
+  const { colors } = useTheme();
 
   // 0 for false, 1 for true
   const progress = useDerivedValue(() => {
@@ -39,14 +39,14 @@ const Toggle = ({ value, onValueChange, style }) => {
           elevation: 4,
         },
       }),
-    [theme]
+    []
   );
 
   const containerStyle = useAnimatedStyle(() => {
     const backgroundColor = interpolateColor(
       progress.value,
       [0, 1],
-      [theme.colors.disabled, theme.colors.primary]
+      [colors.disabled, colors.primary]
     );
     return {
       backgroundColor,

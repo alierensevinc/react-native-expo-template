@@ -7,7 +7,7 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -19,7 +19,7 @@ const Chip = ({
   style,
   textStyle,
 }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography } = useTheme();
   const scale = useSharedValue(1);
 
   const styles = useMemo(
@@ -28,24 +28,22 @@ const Chip = ({
         container: {
           flexDirection: 'row',
           alignItems: 'center',
-          backgroundColor: selected
-            ? theme.colors.primary
-            : theme.colors.surface,
-          paddingVertical: theme.spacing.xs,
-          paddingHorizontal: theme.spacing.m, // Increased horizontal padding for better look
+          backgroundColor: selected ? colors.primary : colors.surface,
+          paddingVertical: spacing.xs,
+          paddingHorizontal: spacing.m, // Increased horizontal padding for better look
           borderRadius: 16,
           borderWidth: 1,
-          borderColor: selected ? theme.colors.primary : theme.colors.disabled,
-          marginRight: theme.spacing.s,
-          marginBottom: theme.spacing.s,
+          borderColor: selected ? colors.primary : colors.disabled,
+          marginRight: spacing.s,
+          marginBottom: spacing.s,
         },
         text: {
-          color: selected ? 'white' : theme.colors.text,
-          fontSize: theme.typography.sizes.caption,
+          color: selected ? 'white' : colors.text,
+          fontSize: typography.sizes.caption,
           marginRight: onDelete ? 4 : 0,
         },
       }),
-    [theme, selected, onDelete]
+    [colors, spacing, typography, selected, onDelete]
   );
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -75,7 +73,7 @@ const Chip = ({
           <Ionicons
             name="close-circle"
             size={16}
-            color={selected ? 'white' : theme.colors.placeholder}
+            color={selected ? 'white' : colors.placeholder}
           />
         </Pressable>
       )}

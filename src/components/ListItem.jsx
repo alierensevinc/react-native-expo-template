@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useMemo } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const ListItem = ({
   left,
@@ -13,7 +13,7 @@ const ListItem = ({
   style,
   divider,
 }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography } = useTheme();
 
   const styles = useMemo(
     () =>
@@ -21,27 +21,27 @@ const ListItem = ({
         container: {
           flexDirection: 'row',
           alignItems: 'center',
-          padding: theme.spacing.m,
-          backgroundColor: theme.colors.surface,
+          padding: spacing.m,
+          backgroundColor: colors.surface,
           borderBottomWidth: divider ? 1 : 0,
-          borderBottomColor: theme.colors.disabled,
+          borderBottomColor: colors.disabled,
         },
         content: {
           flex: 1,
-          marginHorizontal: theme.spacing.m,
+          marginHorizontal: spacing.m,
         },
         title: {
-          color: theme.colors.text,
-          fontSize: theme.typography.sizes.body,
-          fontWeight: theme.typography.weights.medium,
+          color: colors.text,
+          fontSize: typography.sizes.body,
+          fontWeight: typography.weights.medium,
         },
         subtitle: {
-          color: theme.colors.placeholder,
-          fontSize: theme.typography.sizes.caption,
+          color: colors.placeholder,
+          fontSize: typography.sizes.caption,
           marginTop: 2,
         },
       }),
-    [theme, divider]
+    [colors, spacing, typography, divider]
   );
 
   return (
@@ -62,11 +62,7 @@ const ListItem = ({
       {right ? (
         <View>{right}</View>
       ) : onPress ? (
-        <Ionicons
-          name="chevron-forward"
-          size={20}
-          color={theme.colors.placeholder}
-        />
+        <Ionicons name="chevron-forward" size={20} color={colors.placeholder} />
       ) : null}
     </Pressable>
   );

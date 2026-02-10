@@ -15,10 +15,10 @@ import Animated, {
   FadeOutUp,
 } from 'react-native-reanimated';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const Accordion = ({ title, children, style }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const rotation = useSharedValue(0);
 
@@ -40,31 +40,31 @@ const Accordion = ({ title, children, style }) => {
     () =>
       StyleSheet.create({
         container: {
-          backgroundColor: theme.colors.surface,
-          borderRadius: theme.spacing.s,
+          backgroundColor: colors.surface,
+          borderRadius: spacing.s,
           overflow: 'hidden',
-          marginBottom: theme.spacing.s,
+          marginBottom: spacing.s,
           borderWidth: 1,
-          borderColor: theme.colors.disabled,
+          borderColor: colors.disabled,
         },
         header: {
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
-          padding: theme.spacing.m,
+          padding: spacing.m,
         },
         title: {
-          color: theme.colors.text,
-          fontSize: theme.typography.sizes.body,
-          fontWeight: theme.typography.weights.medium,
+          color: colors.text,
+          fontSize: typography.sizes.body,
+          fontWeight: typography.weights.medium,
         },
         content: {
-          padding: theme.spacing.m,
+          padding: spacing.m,
           borderTopWidth: 1,
-          borderTopColor: theme.colors.disabled,
+          borderTopColor: colors.disabled,
         },
       }),
-    [theme]
+    [colors, spacing, typography]
   );
 
   const iconStyle = useAnimatedStyle(() => {
@@ -78,7 +78,7 @@ const Accordion = ({ title, children, style }) => {
       <Pressable onPress={toggleAccordion} style={styles.header}>
         <Text style={styles.title}>{title}</Text>
         <Animated.View style={iconStyle}>
-          <Ionicons name="chevron-down" size={20} color={theme.colors.text} />
+          <Ionicons name="chevron-down" size={20} color={colors.text} />
         </Animated.View>
       </Pressable>
       {isOpen && (

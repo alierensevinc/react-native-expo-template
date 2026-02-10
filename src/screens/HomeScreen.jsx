@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { View, Text, Switch } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import Card from '../components/Card';
-import Header from '../components/Header';
-import { useTheme } from '../context/ThemeContext';
+import Card from '@components/Card';
+import Header from '@components/Header';
+import { useTheme } from '@context/ThemeContext';
 
 export default function HomeScreen() {
   const { t } = useTranslation();

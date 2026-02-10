@@ -7,7 +7,7 @@ import Animated, {
   interpolateColor,
 } from 'react-native-reanimated';
 
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 
 const Input = ({
   label,
@@ -21,7 +21,7 @@ const Input = ({
   onChangeText,
   ...props
 }) => {
-  const theme = useTheme();
+  const { colors, spacing, typography } = useTheme();
   const [isFocused, setIsFocused] = useState(false);
   const [internalValue, setInternalValue] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -42,22 +42,22 @@ const Input = ({
     () =>
       StyleSheet.create({
         container: {
-          marginBottom: theme.spacing.m,
+          marginBottom: spacing.m,
         },
         inputContainer: {
           flexDirection: 'row',
           alignItems: 'center',
           borderWidth: 1,
-          borderRadius: theme.spacing.s,
-          paddingHorizontal: theme.spacing.s,
+          borderRadius: spacing.s,
+          paddingHorizontal: spacing.s,
           height: 56, // Increased height for better interaction and label space
-          backgroundColor: theme.colors.surface,
+          backgroundColor: colors.surface,
         },
         input: {
           flex: 1,
-          color: theme.colors.text,
-          fontSize: theme.typography.sizes.body,
-          paddingHorizontal: theme.spacing.s,
+          color: colors.text,
+          fontSize: typography.sizes.body,
+          paddingHorizontal: spacing.s,
           paddingTop: label ? 18 : 0, // Push text down if label exists
           height: '100%',
         },
@@ -70,11 +70,11 @@ const Input = ({
           pointerEvents: 'none', // Let clicks pass through to input
         },
         label: {
-          fontSize: theme.typography.sizes.body,
+          fontSize: typography.sizes.body,
         },
         errorText: {
-          color: theme.colors.error,
-          fontSize: theme.typography.sizes.caption,
+          color: colors.error,
+          fontSize: typography.sizes.caption,
           marginTop: 4,
           marginLeft: 4,
         },
@@ -84,7 +84,7 @@ const Input = ({
           alignItems: 'center',
         },
       }),
-    [theme, leftIcon, label]
+    [colors, spacing, typography, leftIcon, label]
   );
 
   const animatedLabelStyle = useAnimatedStyle(() => {
@@ -94,17 +94,11 @@ const Input = ({
         { translateY: withTiming(shouldFloat ? -12 : 0, { duration: 200 }) },
       ],
       fontSize: withTiming(
-        shouldFloat
-          ? theme.typography.sizes.caption
-          : theme.typography.sizes.body,
+        shouldFloat ? typography.sizes.caption : typography.sizes.body,
         { duration: 200 }
       ),
       color: withTiming(
-        error
-          ? theme.colors.error
-          : isFocused
-            ? theme.colors.primary
-            : theme.colors.placeholder,
+        error ? colors.error : isFocused ? colors.primary : colors.placeholder,
         { duration: 200 }
       ),
     };
@@ -114,7 +108,7 @@ const Input = ({
     const borderColor = interpolateColor(
       error ? 2 : isFocused ? 1 : 0,
       [0, 1, 2],
-      [theme.colors.disabled, theme.colors.primary, theme.colors.error]
+      [colors.disabled, colors.primary, colors.error]
     );
 
     return {
@@ -155,7 +149,7 @@ const Input = ({
             <Ionicons
               name={isPasswordVisible ? 'eye-off' : 'eye'}
               size={20}
-              color={theme.colors.placeholder}
+              color={colors.placeholder}
             />
           </Pressable>
         ) : rightIcon ? (
